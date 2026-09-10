@@ -1,0 +1,50 @@
+{
+ "skill_name": "eyd",
+ "evals": [
+  {
+   "id": 1,
+   "prompt": "Perbaiki bahasa naskah ini sesuai EYD V dan buat kalimatnya efektif. Beri catatan perubahan.",
+   "files": [
+    "evals/contoh-bermasalah.md"
+   ],
+   "expected_output": "Teks suntingan yang lolos periksa.py dengan 0 ERROR; catatan perubahan berkode per kategori; makna asli dipertahankan."
+  },
+  {
+   "id": 2,
+   "prompt": "Tulis abstrak (±200 kata) artikel jurnal tentang pendugaan area kecil untuk kemiskinan tingkat kecamatan dengan data Susenas, ragam ilmiah.",
+   "files": [],
+   "expected_output": "Abstrak satu paragraf padu: latar–tujuan–metode–hasil–implikasi; lolos periksa.py; istilah asing memakai pola Kelas A/B/C."
+  },
+  {
+   "id": 3,
+   "prompt": "Mana yang benar: 'di mana' atau 'dimana'? Dan kapan 'Maha' ditulis terpisah?",
+   "files": [],
+   "expected_output": "Menjelaskan kata depan vs awalan dengan uji cepat, dan kaidah EYD V bahwa maha + sifat/nama Tuhan ditulis terpisah dengan kapital, mahasiswa serangkai."
+  },
+  {
+   "id": 4,
+   "prompt": "Periksa naskah ini.",
+   "files": [
+    "evals/contoh-bersih.md"
+   ],
+   "expected_output": "Menyatakan naskah sudah sesuai kaidah; tidak mengada-adakan kesalahan; paling banyak saran gaya minor."
+  },
+  {
+   "id": 5,
+   "prompt": "Perbaiki penggunaan kata hubung dalam naskah ini dan jelaskan alasannya.",
+   "files": [
+    "evals/contoh-konjungsi.md"
+   ],
+   "expected_output": "Semua konjungsi salah tingkat (namun di tengah, Sementara/Yang di awal, sehingga+koma, korelatif salah pasang, maka ganda) diperbaiki; penjelasan merujuk kata-hubung.md; hasil lolos periksa.py."
+  },
+  {
+   "id": 6,
+   "prompt": "Periksa naskah LaTeX ini.",
+   "files": [
+    "evals/contoh-latex.tex"
+   ],
+   "expected_output": "Hanya 'Sehingga' di awal kalimat dan 'terdiri dari' yang dilaporkan ERROR; numeralia (Ketiga keluarga), subjek (Akibatnya tajam), 'Lebih jauh lagi,', kalimat tanya 'Di mana ...?', dan klausa setelah rumus tampilan tidak ditandai."
+  }
+ ],
+ "cara_uji_harness": "python3 scripts/periksa.py evals/contoh-bermasalah.md  → harus ada ERROR; python3 scripts/periksa.py evals/contoh-bersih.md → harus 0 ERROR 0 WARNING"
+}
