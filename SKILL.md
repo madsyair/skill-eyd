@@ -5,7 +5,7 @@ description: Pedoman menulis dan menyunting teks berbahasa Indonesia yang baik d
 
 # Menulis Bahasa Indonesia yang Baik dan Benar (EYD V)
 
-Tulisan yang baik: tepat ragamnya (ilmiah, resmi, populer) dan dipahami pembaca. Tulisan yang benar: mengikuti EYD V dan tata bahasa baku. Skill ini mengejar keduanya dengan dua mekanisme: **harness** (pemeriksa otomatis + rubrik tetap) dan **loop** (tulis → periksa → perbaiki → periksa lagi sampai bersih). Jangan pernah menyerahkan teks Indonesia tanpa melewati loop ini minimal sekali.
+Tulisan yang **benar** mengikuti EYD V dan tata bahasa baku. Tulisan yang **baik** jelas, konkret, bertenaga, terstruktur sesuai jenisnya, dan berpihak pada pembaca — benar saja tidak cukup. Skill ini mengejar keduanya dengan dua mekanisme: **harness** (pemeriksa otomatis + rubrik tetap) dan **loop** (tulis → periksa → perbaiki → periksa lagi sampai bersih). Jangan pernah menyerahkan teks Indonesia tanpa melewati loop ini minimal sekali.
 
 ## Berkas dalam skill ini
 
@@ -14,6 +14,7 @@ Tulisan yang baik: tepat ragamnya (ilmiah, resmi, populer) dan dipahami pembaca.
 | `references/eyd-v-ringkas.md` | Kaidah EYD V yang paling sering dilanggar + apa yang berubah dari PUEBI | **Selalu**, sebelum menulis/menyunting |
 | `references/inventaris-kesalahan.md` | Peta ranjau: ratusan pola salah → benar (ejaan, imbuhan, kata depan, gabungan kata, partikel, angka, tanda baca, struktur kalimat, pleonasme, diksi, ragam, istilah) | Saat menyunting; saat harness melaporkan kategori tertentu |
 | `references/kalimat-efektif.md` | Enam syarat kalimat efektif; alat kohesi antarkalimat; anatomi paragraf dan cara menjahit antarparagraf; daftar periksa kepaduan | Teks > 1 paragraf |
+| `references/menulis-baik.md` | Sisi *baik*: tiga pertanyaan pra-tulis, kejelasan, kekonkretan, tenaga dan irama, struktur per jenis tulisan (abstrak, pendahuluan, surat dinas, laporan, modul, opini), pembuka/penutup, tanda tulisan mesin, daftar periksa | **Selalu** saat menulis naskah baru; iterasi terakhir saat menyunting |
 | `references/kata-hubung.md` | Konjungsi tiga tingkat (intrakalimat, antarkalimat, antarparagraf), pasangan korelatif, 30+ pasangan yang sering tertukar (*tetapi/namun, sedangkan/sementara, dengan demikian/oleh karena itu*), daftar periksa | Teks > 1 paragraf; saat harness melaporkan K-awal, K-konj, T-koma, P-kepaduan |
 | `references/istilah-dan-kbbi.md` | Kebijakan istilah asing vs padanan KBBI (Kelas A/B/C) + glosarium statistika/sains data/komputasi | Teks mengandung istilah asing atau teknis |
 | `references/eyd-v-lengkap.md` | Teks resmi EYD V (±13.000 kata) dengan daftar isi | Hanya jika ringkasan tidak menjawab; cari dengan `grep -n` pada judul bab |
@@ -29,7 +30,7 @@ Tulisan yang baik: tepat ragamnya (ilmiah, resmi, populer) dan dipahami pembaca.
 - Baca `references/eyd-v-ringkas.md` sekarang. Untuk teks > 1 paragraf, baca juga `references/kalimat-efektif.md` dan `references/kata-hubung.md`.
 
 ### Langkah 1 — Tulis atau terima draf
-Mode menulis: susun kerangka (gagasan per paragraf) dahulu, lalu tulis. Terapkan sejak awal: subjek–predikat jelas, satu paragraf satu gagasan, kalimat 15–25 kata, istilah konsisten, transisi antarkalimat diikuti koma.
+Mode menulis: jawab dahulu tiga pertanyaan `menulis-baik.md` §1 (siapa pembacanya, apa yang harus mereka ketahui/lakukan, apa pesan intinya — satu kalimat), pilih struktur menurut jenis tulisan (§5), susun kerangka (gagasan per paragraf), lalu tulis. Pesan inti harus muncul di 30 detik pertama membaca. Terapkan sejak awal: subjek–predikat jelas, satu paragraf satu gagasan, kalimat 15–25 kata, istilah konsisten, transisi antarkalimat diikuti koma.
 Mode menyunting: pertahankan makna dan gaya penulis; ubah hanya yang salah atau tidak efektif. Jangan menulis ulang total kecuali diminta.
 Simpan draf ke berkas, misalnya `/home/claude/draf.md` (harness membaca berkas).
 
@@ -57,13 +58,15 @@ Harness hanya menangkap pola permukaan. Periksa sendiri sepuluh dimensi berikut,
 8. **Kehematan & kecermatan** — tidak ada pleonasme; nominalisasi bertele-tele diganti verba; *terdiri atas, bergantung pada, antara ... dan, pukul/jam, suatu/sesuatu, setiap/masing-masing*; kata ganti mengacu jelas.
 9. **Kepaduan & kata hubung** — konjungsi tepat tingkatnya (*tetapi* di dalam kalimat, *Namun,* antarkalimat; *sedangkan* pertentangan, *sementara* waktu; *dengan demikian* simpulan, *oleh karena itu* akibat); korelatif lengkap; kata tunjuk beracuan jelas; tiap paragraf satu kalimat topik; kalimat pertama paragraf terhubung ke paragraf sebelumnya (kata kunci/transisi/pengacuan); transisi bervariasi; *tersebut/ini/itu* mengacu jelas; urutan logis dipertahankan; penutup memantulkan tujuan.
 10. **Istilah** — satu konsep satu istilah; penyebutan pertama memakai pola Kelas A/B/C; istilah asing miring; padanan KBBI hadir sebagai penjelasan bila istilah asing dipertahankan.
+11. **Kejelasan & kekonkretan** — pesan inti tampak di awal; klaim didukung angka/contoh; tidak ada kata kabur (*berbagai, cukup, pihak terkait, signifikan* nonstatistik) tanpa penjelasan; verba bekerja (*terdapat/adanya/melakukan + nomina* diperiksa); kata tunjuk beracuan jelas.
+12. **Gaya & struktur** — panjang kalimat bervariasi; tidak ada pembuka klise, penguat kosong, penyangga bertumpuk, rangkaian sinonim, transisi berulang; struktur sesuai jenis tulisan; pembuka mengait, penutup memberi implikasi; tidak terbaca sebagai tulisan mesin (`menulis-baik.md` §7).
 
 ### Langkah 4 — Perbaiki, lalu ulangi Langkah 2–3
-Kriteria berhenti: (a) harness melaporkan **0 ERROR** dan setiap WARNING yang tersisa sudah dinilai sah, **dan** (b) sepuluh dimensi rubrik lolos. Biasanya butuh 2 iterasi; batasi maksimum 4. Pada iterasi terakhir, baca teks sekali lagi dari atas ke bawah **hanya** untuk kepaduan (dimensi 9) — ini yang paling sering luput karena perbaikan lokal bisa memutus alur.
+Kriteria berhenti: (a) harness melaporkan **0 ERROR** dan setiap WARNING yang tersisa sudah dinilai sah, **dan** (b) sepuluh dimensi rubrik lolos. Biasanya butuh 2 iterasi; batasi maksimum 4. Pada iterasi terakhir, baca teks sekali lagi dari atas ke bawah untuk kepaduan dan gaya (dimensi 9, 11, 12) — ini yang paling sering luput karena perbaikan lokal bisa memutus alur. Uji terakhir: baca hanya kalimat pertama tiap paragraf; alur argumen harus masih terbaca.
 
 ### Langkah 5 — Serahkan
 - **Mode menulis**: berikan teks final. Jika pengguna meminta berkas, tulis ke `/mnt/user-data/outputs/` dan tampilkan dengan `present_files`. Sebutkan singkat pilihan istilah Kelas C (istilah asing yang dipertahankan beserta padanan KBBI-nya) jika ada.
-- **Mode menyunting**: berikan (1) teks hasil suntingan, dan (2) **catatan perubahan** ringkas berkelompok per kategori (kode E/I/D/G/P/S/T/K/M/L/R/A) dengan contoh sebelum → sesudah dan alasan satu baris. Jangan mendaftar setiap perubahan sepele; kelompokkan. Jika teks panjang, catatan cukup 5–12 butir yang paling berpengaruh. Format tabel cocok untuk ini.
+- **Mode menyunting**: tanyakan dalam hati seberapa jauh boleh mengubah. Jika pengguna hanya minta "perbaiki"/"koreksi", sunting kaidah dan kejelasan tanpa mengubah struktur; jika minta "buat lebih baik"/"tulis ulang"/"perbaiki alurnya", terapkan juga dimensi 11–12 termasuk menyusun ulang paragraf. Berikan (1) teks hasil suntingan, dan (2) **catatan perubahan** ringkas berkelompok per kategori (kode E/I/D/G/P/S/T/K/M/L/R/A) dengan contoh sebelum → sesudah dan alasan satu baris. Jangan mendaftar setiap perubahan sepele; kelompokkan. Jika teks panjang, catatan cukup 5–12 butir yang paling berpengaruh. Format tabel cocok untuk ini.
 - **Mode memeriksa**: sebutkan kaidah EYD V yang berlaku (nama bab/butir), bentuk benar, dan alasan; kutip contoh dari `eyd-v-ringkas.md` atau `eyd-v-lengkap.md`.
 - Tulis dalam bahasa Indonesia yang juga mematuhi kaidah ini — jawaban tentang EYD yang sendiri melanggar EYD tidak dapat dipercaya.
 

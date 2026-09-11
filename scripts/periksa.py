@@ -9,6 +9,8 @@ Pemakaian:
   python3 periksa.py naskah.docx               # .docx dikonversi lewat pandoc bila ada
   python3 periksa.py naskah.tex                # LaTeX/Markdown diratakan: rumus → kata ganti, judul → §
   Baris yang memuat "→" atau "~~" dianggap catatan penyuntingan (contoh salah) dan dilewati.
+  Kategori B-gaya (klise, kata kabur, penguat kosong, verba lemah, kalimat seragam) selalu WARNING:
+  ini soal "baik", bukan "benar", dan perlu penilaian konteks (lihat references/menulis-baik.md).
   python3 periksa.py naskah.md --ragam populer # longgarkan aturan ragam cakapan
 
 Kode keluar: 0 = tidak ada temuan ERROR, 1 = ada ERROR (WARNING tidak memengaruhi).
@@ -178,6 +180,24 @@ DIKSI = [
   "'Menurut X, ...' ATAU 'X mengatakan ...' (jangan keduanya)","ERROR"),
 ]
 
+# Gaya (kategori B-gaya): klise, kata kabur, penguat kosong, penyangga bertumpuk — WARNING, dinilai dalam konteks
+GAYA=[
+ (r"^\s*(di|dalam|pada) era (digital|globalisasi|modern|industri 4\.0|society 5\.0|disrupsi|teknologi)[^.]*", "pembuka klise zaman; mulai dari fakta atau masalah spesifik"),
+ (r"^\s*(dewasa ini|seiring (dengan )?perkembangan (zaman|teknologi)|sebagaimana (yang )?kita ketahui|seperti (yang )?kita ketahui|tidak dapat dipungkiri|tak dapat dipungkiri|pada dasarnya|pada hakikatnya|sebenarnya|perlu diketahui bahwa|dapat dikatakan bahwa)\b", "pengantar hampa/klise; mulai dari isinya"),
+ (r"\b(sangat|amat|benar-benar|sungguh|luar biasa|tentu saja|jelas sekali)\b", "penguat kosong; ganti dengan ukuran/bukti atau hapus"),
+ (r"\b(mungkin|kiranya|sekiranya|barangkali|agaknya|tampaknya|relatif|cukup|kurang lebih)\b[^.,;]{0,25}\b(mungkin|kiranya|dapat|bisa|relatif|cukup|agak|kurang lebih|sedikit banyak)\b", "penyangga bertumpuk; satu penyangga per klaim"),
+ (r"\b(berbagai|sejumlah|beberapa) (faktor|hal|aspek|upaya|pihak|kendala|permasalahan|hal-hal)\b(?![^.]*\b(yaitu|antara lain|seperti|misalnya)\b)", "kata kabur: sebutkan faktornya/pihaknya"),
+ (r"\bpihak(-pihak)? terkait\b|\bhal-hal (yang )?(terkait|berkaitan|tersebut)\b|\bhal-hal lain(nya)?\b", "kabur: sebutkan siapa/apa"),
+ (r"\b(cukup|relatif|lumayan) (baik|bagus|tinggi|rendah|besar|kecil|signifikan|memadai|efektif|akurat)\b", "kabur: beri angka atau pembanding"),
+ (r"\b(sangat|cukup|amat) (penting|krusial|esensial|vital|mendesak)\b(?![^.]*\b(karena|sebab|agar|untuk)\b)", "'penting' tanpa alasan; sebutkan mengapa atau apa akibatnya"),
+ (r"\b(penting|krusial|esensial|vital)\b[^.]{0,20}\b(dan|serta)\b[^.]{0,20}\b(penting|krusial|esensial|vital)\b", "rangkaian sinonim; satu kata"),
+ (r"\b(terdapat|ada|adanya) (peningkatan|penurunan|perbedaan|hubungan|pengaruh|kenaikan|perubahan|kecenderungan)\b", "verba lemah: 'X meningkat/menurun/berbeda/berhubungan/memengaruhi/berubah/cenderung'"),
+ (r"\b(holistik|komprehensif|sinergi|sinergis|optimal|berkelanjutan|terintegrasi|inovatif|strategis|paradigma|akselerasi|kolaboratif)\b(?![^.]*\b(yaitu|dengan cara|melalui|misalnya|berarti|dalam arti)\b)", "kata pengisi resmi tanpa isi; jelaskan konkretnya atau hapus"),
+ (r"\bsecara keseluruhan, dapat disimpulkan bahwa\b|\bdemikian(lah)? (yang dapat|simpulan|tulisan|laporan)\b|\bsemoga bermanfaat\b|\bmasih jauh dari (kata )?sempurna\b", "penutup hampa/permintaan maaf; tutup dengan implikasi atau tindakan"),
+ (r"\b(dalam rangka|guna|terkait|dimaksud|sebagaimana mestinya|adanya)\b", "kata pengisi resmi; hapus atau ganti kata biasa (untuk/tentang) jika tidak mengubah makna"),
+ (r"\bmenunjukkan hasil yang (baik|bagus|memuaskan|positif)\b|\bhasil(nya)? (cukup |sangat )?(baik|bagus|memuaskan)\b", "klaim tanpa angka; sebutkan ukurannya"),
+]
+
 KONJ_ANTAR = ["Oleh karena itu","Oleh sebab itu","Namun","Akan tetapi","Selain itu","Di samping itu","Dengan demikian",
  "Jadi","Sebaliknya","Sementara itu","Meskipun demikian","Kendati demikian","Walaupun demikian","Di sisi lain","Lebih lanjut",
  "Selanjutnya","Akibatnya","Misalnya","Sebagai contoh","Pertama","Kedua","Ketiga","Keempat","Kelima","Terakhir","Dengan kata lain",
@@ -306,6 +326,10 @@ def periksa(teks, ragam="ilmiah"):
                 try: s=m.expand(saran) if "\\" in saran else saran
                 except Exception: s=saran
                 add(i,"L-diksi",tk,bb[m.start():m.end()],s)
+        # B: gaya
+        for pola,saran in GAYA:
+            for m in re.finditer(pola,low):
+                if not dlm_miring(m.start(),m.end()): add(i,"B-gaya","WARNING",bb[m.start():m.end()][:60],saran)
         # R: ragam cakapan
         if ragam=="ilmiah":
             for salah,benar in RAGAM_CAKAPAN.items():
@@ -405,6 +429,11 @@ def periksa(teks, ragam="ilmiah"):
         kal=kalimat_dari(p)
         if len(kal)==1 and len(p.split())>15: add(0,"P-kepaduan","WARNING",f"paragraf {idx}: satu kalimat","paragraf satu kalimat; kembangkan atau gabungkan")
         if len(p.split())>280: add(0,"P-kepaduan","WARNING",f"paragraf {idx}: {len(p.split())} kata","paragraf terlalu panjang; kemungkinan >1 gagasan → pecah")
+        pj=[len(k.split()) for k in kal]
+        for j in range(len(pj)-3):
+            w=pj[j:j+4]
+            if all(x>=12 for x in w) and max(w)-min(w)<=3:
+                add(0,"B-gaya","WARNING",f"paragraf {idx}: empat kalimat berturut-turut ±{sum(w)//4} kata","panjang kalimat seragam; variasikan (satu kalimat pendek memberi tekanan)"); break
         # transisi sama pada kalimat berturut-turut
         awal=[re.match(r"^(\w+( itu)?)",k.lower()).group(1) for k in kal if re.match(r"^(\w+( itu)?)",k.lower())]
         for a,b2 in zip(awal,awal[1:]):

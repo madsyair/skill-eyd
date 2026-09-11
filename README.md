@@ -2,7 +2,7 @@
 
 Skill ini memandu Claude menulis dan menyunting teks berbahasa Indonesia sesuai **Ejaan Bahasa Indonesia yang Disempurnakan Edisi V (EYD V, 2022)**, dengan kalimat efektif dan paragraf padu. Skill ini dibangun untuk kebutuhan penulisan akademik dan kedinasan (artikel jurnal, skripsi/tesis, laporan, dokumen akreditasi, surat dinas, modul ajar), tetapi juga berlaku untuk tulisan populer.
 
-Dua hal yang membedakannya dari sekadar "daftar kaidah":
+Skill ini membedakan tulisan yang **benar** (kaidah EYD V dan tata bahasa) dari tulisan yang **baik** (jelas, konkret, bertenaga, terstruktur sesuai jenisnya, berpihak pada pembaca), dan mengejar keduanya. Dua hal yang membedakannya dari sekadar "daftar kaidah":
 
 - **Harness**: skrip pemeriksa otomatis (`scripts/periksa.py`) yang mendeteksi ratusan pola kesalahan secara deterministik, ditambah rubrik tinjauan sepuluh dimensi.
 - **Loop**: alur kerja tulis → periksa → perbaiki → periksa lagi sampai laporan bersih dan rubrik lolos. Claude tidak menyerahkan teks sebelum melewati loop ini.
@@ -18,6 +18,7 @@ eyd/
 │   ├── inventaris-kesalahan.md      # ±400 pola salah → benar dalam 12 kategori
 │   ├── kalimat-efektif.md           # kalimat efektif, kohesi antarkalimat, koherensi antarparagraf
 │   ├── kata-hubung.md               # konjungsi tiga tingkat, korelatif, pasangan yang sering tertukar
+│   ├── menulis-baik.md              # sisi 'baik': kejelasan, kekonkretan, gaya, struktur per jenis tulisan
 │   └── istilah-dan-kbbi.md          # kebijakan istilah asing vs padanan KBBI + glosarium sains data
 ├── scripts/
 │   └── periksa.py                   # pemeriksa otomatis (Python 3, tanpa dependensi)
@@ -27,6 +28,7 @@ eyd/
     ├── contoh-bersih.md             # harus 0 temuan
     ├── contoh-kapital-istilah.md
     ├── contoh-konjungsi.md
+    ├── contoh-gaya.md
     └── contoh-latex.tex
 ```
 
@@ -79,7 +81,7 @@ python3 scripts/periksa.py naskah.md --fix keluar.md  # terapkan perbaikan yang 
 python3 scripts/periksa.py naskah.md --json           # keluaran JSON untuk otomasi
 ```
 
-Kode keluar `0` berarti tidak ada ERROR; `1` berarti ada. WARNING tidak memengaruhi kode keluar.
+Kode keluar `0` berarti tidak ada ERROR; `1` berarti ada. WARNING tidak memengaruhi kode keluar. Kategori `B-gaya` (pembuka klise, kata kabur, penguat kosong, penyangga bertumpuk, verba lemah, kalimat seragam) selalu WARNING karena menyangkut *baik*, bukan *benar*.
 
 Contoh laporan:
 ```
@@ -115,7 +117,8 @@ Setelah penyebutan pertama, satu konsep memakai satu istilah secara konsisten. G
 Setiap kali mengubah `periksa.py` atau berkas rujukan, jalankan regresi:
 
 ```bash
-python3 scripts/periksa.py evals/contoh-bersih.md        # harus: ERROR 0, WARNING 0
+python3 scripts/periksa.py evals/contoh-bersih.md        # harus: ERROR 0; WARNING hanya B-gaya
+python3 scripts/periksa.py evals/contoh-gaya.md          # harus: ERROR 0; ≥10 WARNING B-gaya
 python3 scripts/periksa.py evals/contoh-bermasalah.md    # harus: puluhan temuan
 python3 scripts/periksa.py evals/contoh-latex.tex        # harus: tepat 2 ERROR (Sehingga di awal, terdiri dari)
 ```

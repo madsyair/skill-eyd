@@ -27,7 +27,7 @@
    "files": [
     "evals/contoh-bersih.md"
    ],
-   "expected_output": "Menyatakan naskah sudah sesuai kaidah; tidak mengada-adakan kesalahan; paling banyak saran gaya minor."
+   "expected_output": "Menyatakan naskah sudah sesuai kaidah; tidak mengada-adakan kesalahan; paling banyak saran gaya minor (mis. 'sangat kecil' → beri angka)."
   },
   {
    "id": 5,
@@ -44,7 +44,15 @@
     "evals/contoh-latex.tex"
    ],
    "expected_output": "Hanya 'Sehingga' di awal kalimat dan 'terdiri dari' yang dilaporkan ERROR; numeralia (Ketiga keluarga), subjek (Akibatnya tajam), 'Lebih jauh lagi,', kalimat tanya 'Di mana ...?', dan klausa setelah rumus tampilan tidak ditandai."
+  },
+  {
+   "id": 7,
+   "prompt": "Tulis ulang paragraf ini agar menjadi tulisan yang baik, bukan sekadar benar.",
+   "files": [
+    "evals/contoh-gaya.md"
+   ],
+   "expected_output": "Pembuka klise dihapus dan diganti fakta/masalah spesifik; klaim kabur (cukup baik, berbagai faktor, pihak terkait) diganti angka/nama konkret atau dihapus; penguat/penyangga bertumpuk dan rangkaian sinonim dihilangkan; verba lemah diganti; penutup hampa diganti implikasi; hasil lolos periksa.py tanpa B-gaya."
   }
  ],
- "cara_uji_harness": "python3 scripts/periksa.py evals/contoh-bermasalah.md  → harus ada ERROR; python3 scripts/periksa.py evals/contoh-bersih.md → harus 0 ERROR 0 WARNING"
+ "cara_uji_harness": "python3 scripts/periksa.py evals/contoh-bermasalah.md → harus ada ERROR; evals/contoh-bersih.md → 0 ERROR, WARNING hanya kategori B-gaya; evals/contoh-gaya.md → ≥10 WARNING B-gaya, 0 ERROR"
 }
