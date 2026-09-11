@@ -19,6 +19,7 @@ eyd/
 │   ├── kalimat-efektif.md           # kalimat efektif, kohesi antarkalimat, koherensi antarparagraf
 │   ├── kata-hubung.md               # konjungsi tiga tingkat, korelatif, pasangan yang sering tertukar
 │   ├── menulis-baik.md              # sisi 'baik': kejelasan, kekonkretan, gaya, struktur per jenis tulisan
+│   ├── aparat-karya-ilmiah.md       # pola paragraf, argumentasi, kutipan/sitasi, tabel-gambar, judul, notasi
 │   └── istilah-dan-kbbi.md          # kebijakan istilah asing vs padanan KBBI + glosarium sains data
 ├── scripts/
 │   └── periksa.py                   # pemeriksa otomatis (Python 3, tanpa dependensi)

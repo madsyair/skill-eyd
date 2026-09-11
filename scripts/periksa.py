@@ -195,6 +195,14 @@ GAYA=[
  (r"\b(holistik|komprehensif|sinergi|sinergis|optimal|berkelanjutan|terintegrasi|inovatif|strategis|paradigma|akselerasi|kolaboratif)\b(?![^.]*\b(yaitu|dengan cara|melalui|misalnya|berarti|dalam arti)\b)", "kata pengisi resmi tanpa isi; jelaskan konkretnya atau hapus"),
  (r"\bsecara keseluruhan, dapat disimpulkan bahwa\b|\bdemikian(lah)? (yang dapat|simpulan|tulisan|laporan)\b|\bsemoga bermanfaat\b|\bmasih jauh dari (kata )?sempurna\b", "penutup hampa/permintaan maaf; tutup dengan implikasi atau tindakan"),
  (r"\b(dalam rangka|guna|terkait|dimaksud|sebagaimana mestinya|adanya)\b", "kata pengisi resmi; hapus atau ganti kata biasa (untuk/tentang) jika tidak mengubah makna"),
+ # aparat karya ilmiah (A-aparat): perujukan tabel/gambar, klaim berlebihan, sumber tanpa sitasi, di mana setelah rumus
+ (r"\b(tabel|gambar|grafik) (di bawah ini|di atas|berikut ini|tersebut di atas)\b", "rujuk dengan nomor: 'Tabel 2 menunjukkan ...' (posisi bisa bergeser)"),
+ (r"\bpada (tabel|gambar) \d+ (dapat dilihat|terlihat|menunjukkan|memperlihatkan)\b", "'Tabel N menunjukkan ...' (subjek berkata depan)"),
+ (r"\b(membuktikan|terbukti|jelas bahwa|pasti|selalu|tidak diragukan)\b", "klaim kuat: pastikan bukti sepadan; biasanya 'menunjukkan/mengindikasikan'"),
+ (r"\b(menurut (para )?(ahli|pakar|penelitian|studi|literatur)|banyak (penelitian|studi|ahli|pakar)|beberapa (penelitian|studi))\b(?![^.]*(\(\d{4}|SITASI|dkk|et al))", "sumber tanpa sitasi: sebutkan siapa dan tahun"),
+ (r"\b(sehingga|maka|jadi) (terbukti|jelas) bahwa\b", "lompatan penalaran; tulis premisnya"),
+ (r"\bmenurut (analisa|analisis) (penulis|peneliti|kami|saya)\b", "'Penulis berpendapat/menilai ...' lebih langsung"),
+ (r"\b(analisis|analisa|kajian|studi|tinjauan|penelitian) (mengenai|tentang|terhadap)\b(?=[^.]{0,80}$)", "judul: kata hampa 'Analisis mengenai ...'; langsung ke objeknya (abaikan jika bukan judul)"),
  (r"\bmenunjukkan hasil yang (baik|bagus|memuaskan|positif)\b|\bhasil(nya)? (cukup |sangat )?(baik|bagus|memuaskan)\b", "klaim tanpa angka; sebutkan ukurannya"),
 ]
 
@@ -329,7 +337,9 @@ def periksa(teks, ragam="ilmiah"):
         # B: gaya
         for pola,saran in GAYA:
             for m in re.finditer(pola,low):
-                if not dlm_miring(m.start(),m.end()): add(i,"B-gaya","WARNING",bb[m.start():m.end()][:60],saran)
+                if not dlm_miring(m.start(),m.end()):
+                    kat="A-aparat" if any(k in saran for k in ("rujuk dengan nomor","subjek berkata depan)","klaim kuat","sumber tanpa sitasi","lompatan penalaran","lebih langsung","judul:")) else "B-gaya"
+                    add(i,kat,"WARNING",bb[m.start():m.end()][:60],saran)
         # R: ragam cakapan
         if ragam=="ilmiah":
             for salah,benar in RAGAM_CAKAPAN.items():
