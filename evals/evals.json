@@ -52,7 +52,29 @@
     "evals/contoh-gaya.md"
    ],
    "expected_output": "Pembuka klise dihapus dan diganti fakta/masalah spesifik; klaim kabur (cukup baik, berbagai faktor, pihak terkait) diganti angka/nama konkret atau dihapus; penguat/penyangga bertumpuk dan rangkaian sinonim dihilangkan; verba lemah diganti; penutup hampa diganti implikasi; hasil lolos periksa.py tanpa B-gaya."
+  },
+  {
+   "id": 8,
+   "prompt": "Periksa pemenggalan kata di akhir baris pada naskah ini dan perbaiki.",
+   "files": [
+    "evals/contoh-penggalan.md"
+   ],
+   "expected_output": "Melaporkan i-/tu, ma-/u, mengakhir-/i (2d), BKK-/BN (5), pen-/yuluhan (1g) sebagai salah; rum-/put dan meng-/ukur dinilai benar (meng-ukur sah karena dasar 'ukur' tidak luluh); perbaikan: itu, mau, meng-/akhiri, BKKBN utuh, pe-/nyuluhan atau penyu-/luhan; merujuk butir EYD V II.C."
+  },
+  {
+   "id": 9,
+   "prompt": "Periksa preambel LaTeX ini, khususnya \\hyphenation dan \\-.",
+   "files": [
+    "evals/contoh-penggalan.tex"
+   ],
+   "expected_output": "a-khir (2d), an-gin (1g dan 2d: angin tidak dipenggal), BP-S (5), ma\\-u (2d) dilaporkan; maka-nan dinilai salah menurut 2a (seharusnya ma-kan-an) meskipun harness tidak menandainya; ma-kan-an dan pen\\-dekatan sah; menyarankan \\mbox{BPS} bila perlu."
+  },
+  {
+   "id": 10,
+   "prompt": "Bagaimana memenggal kata pertanggungjawaban, mengakhiri, saudara, introspeksi, dan menyapu menurut EYD V?",
+   "files": [],
+   "expected_output": "per-tanggung-jawab-an (titik di batas morfem, di dalam dasar boleh per suku: per-tang-gung-ja-wab-an); meng-akhiri (bukan me-ngakhiri, tidak boleh mengakhir-i); sau-da-ra (diftong au); intro-speksi (unsur gabungan, kaidah 3); me-nya-pu (dasar luluh, 2b); tiap jawaban menyebut butir II.C."
   }
  ],
- "cara_uji_harness": "python3 scripts/periksa.py evals/contoh-bermasalah.md → harus ada ERROR; evals/contoh-bersih.md → 0 ERROR, WARNING hanya kategori B-gaya; evals/contoh-gaya.md → ≥10 WARNING B-gaya, 0 ERROR"
+ "cara_uji_harness": "python3 scripts/periksa.py evals/contoh-bermasalah.md → harus ada ERROR; evals/contoh-bersih.md → 0 ERROR, WARNING hanya kategori B-gaya; evals/contoh-gaya.md → ≥10 WARNING B-gaya, 0 ERROR; evals/contoh-penggalan.md → 4 ERROR + 2 WARNING N-penggal; evals/contoh-penggalan.tex → 3 ERROR + 2 WARNING N-penggal; python3 scripts/penggal.py dengan contoh resmi II.C harus sama dengan teks EYD V kecuali cileuncang (eu ditandai [cek KBBI])"
 }

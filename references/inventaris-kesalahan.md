@@ -2,7 +2,7 @@
 
 Daftar ini adalah "peta ranjau": pola kesalahan yang paling sering muncul dalam tulisan ilmiah, laporan resmi, dokumen instansi, dan artikel populer. Setiap butir memberi bentuk salah → bentuk benar dan alasan singkatnya. Gunakan bersama `scripts/periksa.py` (yang mendeteksi sebagian besar pola di sini secara otomatis) dan `kalimat-efektif.md` (untuk kesalahan pada tingkat kalimat dan paragraf).
 
-Kode kategori dipakai dalam laporan penyuntingan: **E** ejaan/kata baku, **I** imbuhan, **D** kata depan/bentuk terikat, **G** gabungan kata, **P** partikel, **S** singkatan/angka, **T** tanda baca, **K** kalimat (struktur), **M** kemubaziran/pleonasme, **L** logika/kecermatan makna, **R** ragam (cakapan vs tulis), **A** istilah asing/KBBI.
+Kode kategori dipakai dalam laporan penyuntingan: **E** ejaan/kata baku, **I** imbuhan, **D** kata depan/bentuk terikat, **G** gabungan kata, **P** partikel, **S** singkatan/angka, **T** tanda baca, **K** kalimat (struktur), **M** kemubaziran/pleonasme, **L** logika/kecermatan makna, **R** ragam (cakapan vs tulis), **A** istilah asing/KBBI, **N** pemenggalan kata.
 
 ---
 
@@ -151,3 +151,18 @@ Ragam populer (blog, media sosial, buku populer) boleh lebih luwes (*tapi, oke, 
 ## A. Istilah asing dan padanan KBBI (lihat `istilah-dan-kbbi.md`)
 
 Kesalahan yang sering: (1) istilah asing tidak dimiringkan; (2) padanan KBBI dipaksakan padahal belum populer sehingga pembaca tidak paham; (3) istilah asing dipakai padahal padanan Indonesia sudah umum; (4) tidak konsisten (satu tulisan memakai *dataset* dan *gugus data* bergantian); (5) singkatan asing tidak diperkenalkan; (6) bentuk hibrida yang tidak baku (*di-upload* boleh, tetapi *diupload* ✗; *mengupload* ✗ → *mengunggah*).
+
+---
+
+## N. Pemenggalan kata di akhir baris (lihat `pemenggalan-kata.md`)
+
+Hanya relevan untuk naskah yang tata letaknya sudah tetap (cetak, PDF, LaTeX dengan `\hyphenation`/`\-`, kolom sempit, slide). Di naskah digital yang masih disunting, tanda hubung + Enter manual itu sendiri sudah kesalahan.
+
+N1. **Gabungan konsonan satu bunyi dipisah**: *den-gan → de-ngan* · *ban-yak → ba-nyak* · *pen-yakit → pe-nya-kit* · *mus-yawarah → mu-sya-wa-rah* · *mak-hluk → makh-luk* · *kon-gres → kong-res*.
+N2. **Akhiran/awalan dipotong menurut bunyi** (2a): *ma-ka-nan → ma-kan-an* · *ke-kua-tan → ke-ku-at-an* · *pemba-ngunan → pem-bangun-an* · *pe-ngintai → peng-intai* · *me-ngakhiri → meng-akhiri* · *perbua-tan → per-buat-an* · *pergil-ah → pergi-lah*.
+N3. **Dasar luluh diperlakukan seperti tak luluh** (2b): *men-utup → me-nu-tup* · *pen-yapu → pe-nya-pu* · *meng-unci → me-ngun-ci*.
+N4. **Satu huruf tersisa** (2d): *i-tu, ma-u, a-pa, a-khir, u-sia, mengakhir-i, di-a* → tidak dipenggal atau pindah titik (*meng-akhiri*).
+N5. **Diftong/monoftong dipisah** (1b–1c): *pan-da-i → pan-dai* · *sa-u-da-ra → sau-da-ra* · *se-u-da-ti → seu-da-ti* · *sur-ve-i → sur-vei*.
+N6. **Unsur gabungan diabaikan** (3): *in-tros-peksi → intro-speksi* · *tran-sportasi → trans-portasi* · *fo-tog-rafi → foto-grafi* · *pas-casarjana → pasca-sarjana*.
+N7. **Singkatan, nama orang, angka-satuan dipenggal**: *BKK-BN, ST-NK, BP-S* → utuh · *Supra-tman* → pindah per kata · *25 k-g, Rp5.0-00* → utuh.
+N8. **Letak tanda hubung**: di awal baris (↵ *-ra*) → di akhir baris (*ca-* ↵); tanda hubung ganda pada kata ulang (*anak--* ↵ *anak*) → satu (*anak-* ↵ *anak*).

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""
+r"""
 periksa.py — pemeriksa otomatis (harness) penulisan bahasa Indonesia sesuai EYD V.
 
 Pemakaian:
@@ -12,11 +12,15 @@ Pemakaian:
   Kategori B-gaya (klise, kata kabur, penguat kosong, verba lemah, kalimat seragam) selalu WARNING:
   ini soal "baik", bukan "benar", dan perlu penilaian konteks (lihat references/menulis-baik.md).
   python3 periksa.py naskah.md --ragam populer # longgarkan aturan ragam cakapan
+  Kategori N-penggal memeriksa pemenggalan kata buatan penulis: kata terpenggal di akhir baris (ca-\nra),
+  \hyphenation{...} dan \- pada LaTeX (lihat references/pemenggalan-kata.md dan scripts/penggal.py).
 
 Kode keluar: 0 = tidak ada temuan ERROR, 1 = ada ERROR (WARNING tidak memengaruhi).
 Temuan bukan vonis: pemeriksa tidak memahami konteks. Tinjau tiap temuan sebelum diterapkan.
 """
 import re, sys, json, argparse, subprocess, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from penggal import nilai_penggalan
 from collections import Counter
 
 # ---------- 1. Kamus kata tidak baku -> baku (aman untuk --fix) ----------
@@ -483,6 +487,31 @@ def perbaiki(teks):
         out.append(b)
     return "\n".join(out),jumlah
 
+def periksa_penggalan(mentah, ext):
+    """N-penggal: nilai titik penggal yang ditulis penulis sendiri (bukan yang dibuat mesin atur huruf)."""
+    temuan=[]
+    def add(no,tk,apa,saran): temuan.append(dict(baris=no,kategori="N-penggal",tingkat=tk,temuan=apa,saran=saran))
+    def nomor(pos): return mentah.count("\n",0,pos)+1
+    if ext in (".tex",".ltx"):
+        for m in re.finditer(r"\\hyphenation\s*\{([^}]*)\}",mentah):
+            for w in m.group(1).split():
+                bag=w.split("-")
+                for j in range(1,len(bag)):
+                    for tk,pesan in nilai_penggalan("-".join(bag[:j]),"-".join(bag[j:])):
+                        add(nomor(m.start()),tk,f"\\hyphenation: {w}",pesan)
+        for m in re.finditer(r"[A-Za-z\u00C0-\u00FF]+(?:\\-[A-Za-z\u00C0-\u00FF]+)+",mentah):
+            bag=m.group(0).split("\\-")
+            for j in range(1,len(bag)):
+                for tk,pesan in nilai_penggalan("".join(bag[:j]),"".join(bag[j:])):
+                    add(nomor(m.start()),tk,m.group(0),pesan)
+    # kata yang dipenggal manual di akhir baris: ca-\nra, BKK-\nBN
+    for m in re.finditer(r"([A-Za-z\u00C0-\u00FF]+)-[ \t]*\n[ \t]*([A-Za-z\u00C0-\u00FF]+)",mentah):
+        baris=mentah[mentah.rfind("\n",0,m.start())+1:m.start()]
+        if baris.lstrip().startswith(("%","```","    ")) or "→" in baris: continue
+        for tk,pesan in nilai_penggalan(m.group(1),m.group(2)):
+            add(nomor(m.start()),tk,f"{m.group(1)}-/{m.group(2)}",pesan)
+    return temuan
+
 # ---------- 4. Laporan ----------
 def main():
     ap=argparse.ArgumentParser(description=__doc__,formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -496,6 +525,9 @@ def main():
         for k,v in jml.most_common(): print(f"  {k} → {TIDAK_BAKU.get(k,'')} ({v}x)")
         teks=teks2
     temuan=periksa(teks,a.ragam)
+    ext=os.path.splitext(a.berkas)[1].lower()
+    if ext not in (".docx",".odt",".rtf",".html",".htm"):
+        temuan+=periksa_penggalan(open(a.berkas,encoding="utf8").read(),ext)
     temuan.sort(key=lambda t:(t["baris"],t["kategori"]))
     n_err=sum(1 for t in temuan if t["tingkat"]=="ERROR"); n_warn=len(temuan)-n_err
     kata=len(teks.split()); kal=sum(len(kalimat_dari(p)) for p in teks.split("\n") if p.strip())
