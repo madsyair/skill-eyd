@@ -98,6 +98,14 @@ Selalu dengan tanda hubung: *anak-anak, berjalan-jalan, undang-undang, mata-mata
 - *ku-, kau-* serangkai dengan kata yang mengikuti; *-ku, -mu, -nya* serangkai dengan kata sebelumnya: *kubaca, kaubaca, bukuku, rumahmu, hasilnya*. Dengan singkatan/kapital pakai hubung: *KTP-mu, SIM-nya, kepada-Nya*.
 - *si, sang* terpisah: *si pengirim, sang guru*; kapital jika sapaan/nama: *Si Kancil*.
 
+### 3i. Pemenggalan kata (Bab II.C) — rincian di `pemenggalan-kata.md`
+- **Kata dasar**: vokal berurutan dipenggal di antaranya (*bu-ah, ma-in*); diftong *ai, au, ei, oi* dan monoftong *eu* tidak dipenggal (*pan-dai, sau-da-ra, seu-da-ti*); satu konsonan di antara vokal → sebelum konsonan (*ba-pak*); dua konsonan → di antaranya (*ban-tu*); tiga konsonan atau lebih → sesudah konsonan pertama (*in-stru-men*); *kh, ng, ny, sy* tidak dipisah (*de-ngan, ba-nyak, makh-luk*).
+- **Kata berimbuhan**: di antara bentuk dasar dan imbuhan/partikel/bentuk terikat (*ber-jalan, makan-an, peng-intai, non-aktif, apa-kah*), bukan menurut bunyi (*ma-ka-nan* ✗). Dasar yang luluh dan kata bersisipan dipenggal seperti kata dasar (*me-nu-tup, pe-nga-rang, te-lun-juk*).
+- **Satu huruf**: jangan tersisa satu huruf di awal/akhir baris (*i-tu, ma-u, mengakhir-i* ✗ → *itu, mau, meng-akhiri*).
+- **Unsur gabungan**: penggal di antara unsur (*bio-grafi, intro-speksi, pasca-sarjana, kilo-meter*).
+- **Nama orang**: di antara kata, bukan di dalam kata (*Wage* ↵ *Rudolf Supratman*). **Singkatan** tidak dipenggal (*BKKBN, STNK*).
+- Tanda hubung pemenggalan diletakkan di akhir baris (*ca-* ↵ *ra*), tidak di awal baris berikutnya (III.E.1).
+
 ## 4. Tanda baca — kesalahan tersering
 
 ### Titik (.)

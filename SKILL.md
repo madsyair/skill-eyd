@@ -1,6 +1,6 @@
 ---
 name: eyd
-description: Pedoman menulis dan menyunting teks berbahasa Indonesia yang baik dan benar sesuai EYD Edisi V (2022), kalimat efektif (hemat, cermat, logis), dan paragraf yang padu. Gunakan skill ini SETIAP KALI menulis, menyunting, memeriksa, memperbaiki, atau menerjemahkan ke bahasa Indonesia apa pun bentuknya — artikel ilmiah, skripsi/tesis, abstrak, laporan, surat dinas, dokumen akreditasi, RPS, modul ajar, proposal, notula, siaran pers, artikel populer, takarir media sosial, atau sekadar satu paragraf — meskipun pengguna tidak menyebut "EYD", "ejaan", atau "kalimat efektif". Juga gunakan saat pengguna bertanya tentang kata baku, tanda baca, huruf kapital, penulisan angka/singkatan, padanan istilah asing (KBBI), atau menyuruh "rapikan", "perbaiki bahasanya", "koreksi", "proofread", "buat lebih formal/efektif". Skill ini memuat teks resmi EYD V, inventaris kesalahan umum, panduan kepaduan antarkalimat/antarparagraf, kebijakan istilah asing vs padanan KBBI, dan skrip pemeriksa otomatis.
+description: Pedoman menulis dan menyunting teks berbahasa Indonesia yang baik dan benar sesuai EYD Edisi V (2022), kalimat efektif (hemat, cermat, logis), dan paragraf yang padu. Gunakan skill ini SETIAP KALI menulis, menyunting, memeriksa, memperbaiki, atau menerjemahkan ke bahasa Indonesia apa pun bentuknya — artikel ilmiah, skripsi/tesis, abstrak, laporan, surat dinas, dokumen akreditasi, RPS, modul ajar, proposal, notula, siaran pers, artikel populer, takarir media sosial, atau sekadar satu paragraf — meskipun pengguna tidak menyebut "EYD", "ejaan", atau "kalimat efektif". Juga gunakan saat pengguna bertanya tentang kata baku, tanda baca, huruf kapital, penulisan angka/singkatan, pemenggalan kata, padanan istilah asing (KBBI), atau menyuruh "rapikan", "perbaiki bahasanya", "koreksi", "proofread", "buat lebih formal/efektif". Memuat teks resmi EYD V, inventaris kesalahan, panduan kepaduan, kebijakan istilah asing vs KBBI, kaidah pemenggalan kata, serta skrip pemeriksa dan pemenggal otomatis.
 ---
 
 # Menulis Bahasa Indonesia yang Baik dan Benar (EYD V)
@@ -12,15 +12,17 @@ Tulisan yang **benar** mengikuti EYD V dan tata bahasa baku. Tulisan yang **baik
 | Berkas | Isi | Kapan dibaca |
 |---|---|---|
 | `references/eyd-v-ringkas.md` | Kaidah EYD V yang paling sering dilanggar + apa yang berubah dari PUEBI | **Selalu**, sebelum menulis/menyunting |
-| `references/inventaris-kesalahan.md` | Peta ranjau: ratusan pola salah → benar (ejaan, imbuhan, kata depan, gabungan kata, partikel, angka, tanda baca, struktur kalimat, pleonasme, diksi, ragam, istilah) | Saat menyunting; saat harness melaporkan kategori tertentu |
+| `references/inventaris-kesalahan.md` | Peta ranjau: ratusan pola salah → benar (ejaan, imbuhan, kata depan, gabungan kata, partikel, angka, tanda baca, struktur kalimat, pleonasme, diksi, ragam, istilah, pemenggalan) | Saat menyunting; saat harness melaporkan kategori tertentu |
 | `references/kalimat-efektif.md` | Enam syarat kalimat efektif; alat kohesi antarkalimat; anatomi paragraf dan cara menjahit antarparagraf; daftar periksa kepaduan | Teks > 1 paragraf |
 | `references/menulis-baik.md` | Sisi *baik*: tiga pertanyaan pra-tulis, kejelasan, kekonkretan, tenaga dan irama, struktur per jenis tulisan (abstrak, pendahuluan, surat dinas, laporan, modul, opini), pembuka/penutup, tanda tulisan mesin, daftar periksa | **Selalu** saat menulis naskah baru; iterasi terakhir saat menyunting |
 | `references/aparat-karya-ilmiah.md` | Pola pengembangan paragraf (10 pola), kohesi leksikal & kolokasi statistik, argumentasi klaim–bukti–penalaran dan kesesatan logika, kutipan/parafrase/sitasi/daftar pustaka (APA 7), tabel-gambar-lampiran, judul-subjudul-penomoran-daftar berbutir, notasi-rumus-satuan | Karya ilmiah, laporan, dokumen kelembagaan; saat paragraf "tidak berkembang" atau klaim tak berbukti |
 | `references/kata-hubung.md` | Konjungsi tiga tingkat (intrakalimat, antarkalimat, antarparagraf), pasangan korelatif, 30+ pasangan yang sering tertukar (*tetapi/namun, sedangkan/sementara, dengan demikian/oleh karena itu*), daftar periksa | Teks > 1 paragraf; saat harness melaporkan K-awal, K-konj, T-koma, P-kepaduan |
 | `references/istilah-dan-kbbi.md` | Kebijakan istilah asing vs padanan KBBI (Kelas A/B/C) + glosarium statistika/sains data/komputasi | Teks mengandung istilah asing atau teknis |
+| `references/pemenggalan-kata.md` | Kaidah pemenggalan kata EYD V II.C (kata dasar, berimbuhan, unsur gabungan, nama orang, singkatan), prosedur memenggal, praktik LaTeX/Word/HTML, kesalahan umum | Naskah cetak/PDF/LaTeX/kolom sempit; saat harness melaporkan N-penggal; saat ditanya cara memenggal kata |
 | `references/eyd-v-lengkap.md` | Teks resmi EYD V (±13.000 kata) dengan daftar isi | Hanya jika ringkasan tidak menjawab; cari dengan `grep -n` pada judul bab |
 | `evals/` | Contoh naskah bermasalah/bersih + `evals.json` untuk menguji ulang skill setelah diubah | Saat memperbaiki skill ini |
-| `scripts/periksa.py` | Pemeriksa otomatis (harness). `--fix` menerapkan perbaikan aman; `--json` untuk loop; `--ragam populer` melonggarkan aturan cakapan | Setiap iterasi loop |
+| `scripts/periksa.py` | Pemeriksa otomatis (harness). `--fix` menerapkan perbaikan aman; `--json` untuk loop; `--ragam populer` melonggarkan aturan cakapan; kategori N-penggal menilai penggalan buatan penulis | Setiap iterasi loop |
+| `scripts/penggal.py` | Pemenggal kata menurut EYD V II.C; `+` batas morfem, `--tex` mencetak `\hyphenation{...}` | Saat harus memenggal kata atau menyusun `\hyphenation` |
 
 ## Alur kerja (harness + loop)
 
@@ -28,7 +30,7 @@ Tulisan yang **benar** mengikuti EYD V dan tata bahasa baku. Tulisan yang **baik
 - **Mode**: (a) menulis baru, (b) menyunting teks pengguna, (c) memeriksa/menjelaskan kaidah saja, (d) menerjemahkan ke Indonesia.
 - **Ragam**: *ilmiah* (skripsi, artikel jurnal, laporan penelitian), *resmi* (surat dinas, dokumen instansi, akreditasi, RPS), atau *populer* (blog, media sosial, buku populer). Jika tidak jelas, tebak dari konteks; tanyakan hanya jika pilihan ragam mengubah hasil secara drastis.
 - **Pembaca**: menentukan Kelas istilah (A/B/C) — lihat `istilah-dan-kbbi.md`.
-- Baca `references/eyd-v-ringkas.md` sekarang. Untuk teks > 1 paragraf, baca juga `references/kalimat-efektif.md` dan `references/kata-hubung.md`; untuk karya ilmiah/laporan, tambahkan `references/aparat-karya-ilmiah.md`.
+- Baca `references/eyd-v-ringkas.md` sekarang. Untuk teks > 1 paragraf, baca juga `references/kalimat-efektif.md` dan `references/kata-hubung.md`; untuk karya ilmiah/laporan, tambahkan `references/aparat-karya-ilmiah.md`; untuk naskah cetak/PDF/LaTeX atau pertanyaan pemenggalan, tambahkan `references/pemenggalan-kata.md`.
 
 ### Langkah 1 — Tulis atau terima draf
 Mode menulis: jawab dahulu tiga pertanyaan `menulis-baik.md` §1 (siapa pembacanya, apa yang harus mereka ketahui/lakukan, apa pesan intinya — satu kalimat), pilih struktur menurut jenis tulisan (§5), susun kerangka (gagasan per paragraf), lalu tulis. Pesan inti harus muncul di 30 detik pertama membaca. Terapkan sejak awal: subjek–predikat jelas, satu paragraf satu gagasan, kalimat 15–25 kata, istilah konsisten, transisi antarkalimat diikuti koma.
@@ -41,13 +43,13 @@ python3 scripts/periksa.py /home/claude/draf.md            # ragam ilmiah/resmi
 python3 scripts/periksa.py /home/claude/draf.md --ragam populer
 python3 scripts/periksa.py /home/claude/draf.md --fix /home/claude/draf2.md   # terapkan perbaikan aman dahulu
 ```
-Kategori laporan: E (baku), I (imbuhan), D (kata depan/terikat), G (gabungan/ulang), P (partikel), H (kapital), S (angka/singkatan), T (tanda baca), K (kalimat), M (mubazir), L (diksi), R (ragam), A (istilah), P-kepaduan. Temuan pada teks miring diturunkan ke WARNING karena mungkin istilah asing/judul.
+Kategori laporan: E (baku), I (imbuhan), D (kata depan/terikat), G (gabungan/ulang), P (partikel), H (kapital), S (angka/singkatan), T (tanda baca), K (kalimat), M (mubazir), L (diksi), R (ragam), A (istilah), P-kepaduan, N-penggal (pemenggalan kata di akhir baris, `\hyphenation`, `\-`). Temuan pada teks miring diturunkan ke WARNING karena mungkin istilah asing/judul.
 Berkas `.tex` dan `.md` diratakan lebih dulu (rumus → kata ganti di dalam baris, judul → `§`, komentar/preambel/sitasi dibuang, baris dalam satu paragraf digabung), sehingga naskah LaTeX dapat diperiksa langsung. Judul dan kalimat tanya dikecualikan dari aturan tingkat kalimat. Kata yang berfungsi ganda (*Pertama, Ketiga, Akibatnya, Kemudian*) hanya WARNING karena bisa numeralia/subjek.
 **Konvensi kutipan contoh salah**: baris yang memuat `→` atau `~~` dianggap catatan penyuntingan dan dilewati. Saat menulis catatan perubahan, tulis contoh salah dengan pola `*salah* → *benar*` agar tidak ditandai sebagai kesalahan; prosa naskah tetap diperiksa terpisah dari catatannya.
 Bacalah laporan sebagai **petunjuk, bukan vonis**: skrip tidak memahami konteks. Contoh yang harus dinilai sendiri: `di mana` dalam kalimat tanya sah; `antar dan` bukan bentuk terikat; `tergantung` sebagai 'digantung' sah; `3 kabupaten` dalam perincian boleh angka; `jika ..., maka` dalam teks matematis boleh. ERROR hampir selalu benar; WARNING perlu penilaian.
 
 ### Langkah 3 — Tinjauan manual dengan rubrik tetap
-Harness hanya menangkap pola permukaan. Periksa sendiri sepuluh dimensi berikut, satu per satu, sambil membaca teks sekali lagi:
+Harness hanya menangkap pola permukaan. Periksa sendiri dimensi berikut, satu per satu, sambil membaca teks sekali lagi:
 
 1. **Ejaan & kata baku** — semua kata sesuai KBBI/EYD V (serapan: *-itas, -is, -ik, v/f, k/c*).
 2. **Imbuhan** — peluluhan k/t/s/p; *mengubah*; gabungan kata berimbuhan (awalan saja → sebagian; awalan+akhiran → serangkai).
@@ -62,13 +64,14 @@ Harness hanya menangkap pola permukaan. Periksa sendiri sepuluh dimensi berikut,
 11. **Kejelasan & kekonkretan** — pesan inti tampak di awal; klaim didukung angka/contoh; tidak ada kata kabur (*berbagai, cukup, pihak terkait, signifikan* nonstatistik) tanpa penjelasan; verba bekerja (*terdapat/adanya/melakukan + nomina* diperiksa); kata tunjuk beracuan jelas.
 12. **Gaya & struktur** — panjang kalimat bervariasi; tidak ada pembuka klise, penguat kosong, penyangga bertumpuk, rangkaian sinonim, transisi berulang; struktur sesuai jenis tulisan; pembuka mengait, penutup memberi implikasi; tidak terbaca sebagai tulisan mesin (`menulis-baik.md` §7).
 13. **Aparat karya ilmiah** (untuk ragam ilmiah/kelembagaan) — tiap paragraf punya pola pengembangan; klaim–bukti–penalaran lengkap dan verba sepadan dengan bukti; kutipan/parafrase sah dan bersitasi konsisten; tabel/gambar bernomor, berjudul mandiri, dirujuk sebelum muncul; judul/subjudul paralel; notasi miring–tegak benar, lambang didefinisikan sekali (`aparat-karya-ilmiah.md` §8).
+14. **Pemenggalan kata** (bila naskah memuat penggalan manual, `\hyphenation`/`\-`, atau tata letak tetap) — titik penggal di batas morfem; *kh, ng, ny, sy*, diftong, dan monoftong utuh; tidak ada satu huruf tersisa; singkatan dan nama orang tidak dipotong di dalam kata; tanda hubung di akhir baris (bagian *Pemenggalan kata* di bawah).
 
 ### Langkah 4 — Perbaiki, lalu ulangi Langkah 2–3
-Kriteria berhenti: (a) harness melaporkan **0 ERROR** dan setiap WARNING yang tersisa sudah dinilai sah, **dan** (b) sepuluh dimensi rubrik lolos. Biasanya butuh 2 iterasi; batasi maksimum 4. Pada iterasi terakhir, baca teks sekali lagi dari atas ke bawah untuk kepaduan dan gaya (dimensi 9, 11, 12) — ini yang paling sering luput karena perbaikan lokal bisa memutus alur. Uji terakhir: baca hanya kalimat pertama tiap paragraf; alur argumen harus masih terbaca.
+Kriteria berhenti: (a) harness melaporkan **0 ERROR** dan setiap WARNING yang tersisa sudah dinilai sah, **dan** (b) semua dimensi rubrik lolos. Biasanya butuh 2 iterasi; batasi maksimum 4. Pada iterasi terakhir, baca teks sekali lagi dari atas ke bawah untuk kepaduan dan gaya (dimensi 9, 11, 12) — ini yang paling sering luput karena perbaikan lokal bisa memutus alur. Uji terakhir: baca hanya kalimat pertama tiap paragraf; alur argumen harus masih terbaca.
 
 ### Langkah 5 — Serahkan
 - **Mode menulis**: berikan teks final. Jika pengguna meminta berkas, tulis ke `/mnt/user-data/outputs/` dan tampilkan dengan `present_files`. Sebutkan singkat pilihan istilah Kelas C (istilah asing yang dipertahankan beserta padanan KBBI-nya) jika ada.
-- **Mode menyunting**: tanyakan dalam hati seberapa jauh boleh mengubah. Jika pengguna hanya minta "perbaiki"/"koreksi", sunting kaidah dan kejelasan tanpa mengubah struktur; jika minta "buat lebih baik"/"tulis ulang"/"perbaiki alurnya", terapkan juga dimensi 11–12 termasuk menyusun ulang paragraf. Berikan (1) teks hasil suntingan, dan (2) **catatan perubahan** ringkas berkelompok per kategori (kode E/I/D/G/P/S/T/K/M/L/R/A) dengan contoh sebelum → sesudah dan alasan satu baris. Jangan mendaftar setiap perubahan sepele; kelompokkan. Jika teks panjang, catatan cukup 5–12 butir yang paling berpengaruh. Format tabel cocok untuk ini.
+- **Mode menyunting**: tanyakan dalam hati seberapa jauh boleh mengubah. Jika pengguna hanya minta "perbaiki"/"koreksi", sunting kaidah dan kejelasan tanpa mengubah struktur; jika minta "buat lebih baik"/"tulis ulang"/"perbaiki alurnya", terapkan juga dimensi 11–12 termasuk menyusun ulang paragraf. Berikan (1) teks hasil suntingan, dan (2) **catatan perubahan** ringkas berkelompok per kategori (kode E/I/D/G/P/S/T/K/M/L/R/A/N) dengan contoh sebelum → sesudah dan alasan satu baris. Jangan mendaftar setiap perubahan sepele; kelompokkan. Jika teks panjang, catatan cukup 5–12 butir yang paling berpengaruh. Format tabel cocok untuk ini.
 - **Mode memeriksa**: sebutkan kaidah EYD V yang berlaku (nama bab/butir), bentuk benar, dan alasan; kutip contoh dari `eyd-v-ringkas.md` atau `eyd-v-lengkap.md`.
 - Tulis dalam bahasa Indonesia yang juga mematuhi kaidah ini — jawaban tentang EYD yang sendiri melanggar EYD tidak dapat dipercaya.
 
@@ -78,6 +81,18 @@ Padanan KBBI **tidak wajib dipakai** bila belum populer bagi pembaca sasaran, te
 - **B** (dikenal, tetapi istilah asing masih lazim di bidangnya): padanan (*asing*) — *pembelajaran mesin (machine learning)*, *mahadata (big data)*.
 - **C** (padanan belum populer): *asing* (padanan) — **podcast* (siniar)*, **server* (peladen)*, **overfitting* (kelewat pas)*.
 Setelah penyebutan pertama, gunakan satu bentuk secara konsisten. Istilah asing selalu miring; jangan bentuk hibrida (*diupload* → *diunggah*). Rinciannya dan glosarium bidang statistika/sains data ada di `istilah-dan-kbbi.md`.
+
+## Pemenggalan kata (EYD V II.C, ringkas)
+Kaidah ini berlaku saat memenggal kata di akhir baris, menilai penggalan dalam naskah, atau menyusun `\hyphenation{...}` LaTeX. Tanda hubung pemenggalan diletakkan **di akhir baris** (*ca-* ↵ *ra baru*), tidak di awal baris berikutnya.
+
+1. **Kata dasar**: (a) vokal berurutan dipenggal di antaranya: *bu-ah, ma-in, sa-at*; (b) monoftong *eu* utuh: *seu-da-ti*; (c) diftong *ai, au, ei, oi* utuh: *pan-dai, sau-da-ra, sur-vei, am-boi*; (d) satu konsonan di antara dua vokal → sebelum konsonan: *ba-pak, de-ngan, mu-sya-wa-rah*; (e) dua konsonan → di antaranya: *Ap-ril, ban-tu, swas-ta*; (f) tiga konsonan atau lebih → sesudah konsonan pertama: *am-bruk, in-stru-men*; (g) *kh, ng, ny, sy* dihitung satu konsonan dan tidak dipisah: *ba-nyak, kong-res, makh-luk, tung-gu*.
+2. **Kata berimbuhan**: (a) dipenggal di antara bentuk dasar dan imbuhan, partikel, atau bentuk terikat: *ber-jalan, peng-intai, makan-an, ke-kuat-an, di-per-jual-beli-kan, non-aktif, apa-kah* — bukan menurut bunyi (*ma-ka-nan, pe-ngintai* ✗); (b) bentuk dasar yang luluh dipenggal seperti kata dasar: *me-nu-tup, me-nya-pu, me-ngun-ci, pe-nga-rang* (bandingkan *meng-ukur* dari *ukur* dan *me-ngukur* dari *kukur*); (c) kata bersisipan seperti kata dasar: *ge-lem-bung, te-lun-juk*; (d) jangan menyisakan satu huruf di awal/akhir baris: *itu, mau, akhir, usia* tidak dipenggal; *mengakhir-i* ✗ → *meng-akhiri*.
+3. **Unsur gabungan** yang dapat bergabung dengan unsur lain → penggal di antara unsur, mendahului kaidah 1f: *bio-grafi, foto-kopi, intro-speksi, kilo-meter, pasca-sarjana*; juga *auto-korelasi, multi-kolinearitas, trans-portasi*.
+4. **Nama orang** dipindah per kata, tidak dipotong di dalam kata: *Wage* ↵ *Rudolf Supratman*.
+5. **Singkatan dan akronim** tidak dipenggal: *BKKBN, STNK, BPS* (bukan *BKK-* ↵ *BN*). Perluasan yang aman: angka dengan satuan, lambang, URL, DOI, dan rumus juga tidak dipenggal dengan tanda hubung.
+
+Prosedur: kenali singkatan/nama/angka (jangan dipenggal) → uraikan morfem → titik penggal di batas morfem → di dalam bentuk dasar terapkan 1a–1g → buang titik yang menyisakan satu huruf → pilih titik terdekat dengan lebar baris, utamakan batas morfem. Pasangan *ai, au, ei, oi, eu* tidak selalu diftong/monoftong (*ma-in* vs *pan-dai*, *mu-se-um* vs *seu-da-ti*); jangan menebak, cek suku kata lema KBBI atau tandai `[cek KBBI]`.
+Konteks: di naskah digital yang masih mengalir (Word, Google Docs, web), jangan mengetik tanda hubung + Enter secara manual; pakai pemenggalan otomatis, tanda hubung opsional, atau tanpa pemenggalan. Di LaTeX, `\usepackage[indonesian]{babel}` memuat pola Indonesia, tetapi pola itu tidak mengenal morfem; perbaiki kata penting dengan `\hyphenation{ma-kan-an}` (susun dengan `python3 scripts/penggal.py --tex makan+an`) dan lindungi singkatan dengan `\mbox{BPS}`.
 
 ## Prinsip penyuntingan yang sering dilupakan
 - Perbaikan lokal jangan merusak alur: setelah menghapus *Sehingga* di awal kalimat, pastikan hubungan sebab-akibatnya tetap tersampaikan (*Dengan demikian,* atau gabungkan kalimat).

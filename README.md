@@ -15,14 +15,16 @@ eyd/
 ├── references/
 │   ├── eyd-v-lengkap.md             # teks resmi EYD V (±13.000 kata) dari ejaan.kemendikdasmen.go.id
 │   ├── eyd-v-ringkas.md             # kaidah yang paling sering dilanggar + perubahan dari PUEBI
-│   ├── inventaris-kesalahan.md      # ±400 pola salah → benar dalam 12 kategori
+│   ├── inventaris-kesalahan.md      # ±400 pola salah → benar dalam 13 kategori
+│   ├── pemenggalan-kata.md          # kaidah pemenggalan kata EYD V II.C, prosedur, LaTeX/Word/HTML
 │   ├── kalimat-efektif.md           # kalimat efektif, kohesi antarkalimat, koherensi antarparagraf
 │   ├── kata-hubung.md               # konjungsi tiga tingkat, korelatif, pasangan yang sering tertukar
 │   ├── menulis-baik.md              # sisi 'baik': kejelasan, kekonkretan, gaya, struktur per jenis tulisan
 │   ├── aparat-karya-ilmiah.md       # pola paragraf, argumentasi, kutipan/sitasi, tabel-gambar, judul, notasi
 │   └── istilah-dan-kbbi.md          # kebijakan istilah asing vs padanan KBBI + glosarium sains data
 ├── scripts/
-│   └── periksa.py                   # pemeriksa otomatis (Python 3, tanpa dependensi)
+│   ├── periksa.py                   # pemeriksa otomatis (Python 3, tanpa dependensi)
+│   └── penggal.py                   # pemenggal kata EYD V + keluaran \hyphenation{} untuk LaTeX
 └── evals/
     ├── evals.json                   # kasus uji untuk regresi skill
     ├── contoh-bermasalah.md         # harus menghasilkan banyak temuan
@@ -30,7 +32,9 @@ eyd/
     ├── contoh-kapital-istilah.md
     ├── contoh-konjungsi.md
     ├── contoh-gaya.md
-    └── contoh-latex.tex
+    ├── contoh-latex.tex
+    ├── contoh-penggalan.md          # pemenggalan salah di akhir baris
+    └── contoh-penggalan.tex         # \hyphenation dan \- yang salah
 ```
 
 ## Cara memasang
@@ -41,9 +45,8 @@ eyd/
 
 **Claude Code**
 ```bash
-git clone https://github.com/madsyair/skil-eyd.git
 mkdir -p ~/.claude/skills
-cp -r skil-eyd/eyd ~/.claude/skills/eyd
+git clone https://github.com/madsyair/skill-eyd.git ~/.claude/skills/eyd
 ```
 Untuk satu proyek saja, salin ke `.claude/skills/eyd` di akar proyek.
 
@@ -61,7 +64,7 @@ Skill terpicu otomatis setiap kali Claude diminta menulis, menyunting, memeriksa
 - *Mana yang benar, "di mana" atau "dimana"?*
 - *Rapikan paragraf ini supaya lebih padu.*
 
-Dalam mode menyunting, Claude mengembalikan teks hasil suntingan **dan** catatan perubahan berkode kategori. Kodenya: E ejaan, I imbuhan, D kata depan, G gabungan kata, P partikel, H kapital, S angka/singkatan, T tanda baca, K kalimat, M mubazir, L diksi, R ragam, dan A istilah. Contohnya sebagai berikut.
+Dalam mode menyunting, Claude mengembalikan teks hasil suntingan **dan** catatan perubahan berkode kategori. Kodenya: E ejaan, I imbuhan, D kata depan, G gabungan kata, P partikel, H kapital, S angka/singkatan, T tanda baca, K kalimat, M mubazir, L diksi, R ragam, A istilah, dan N pemenggalan kata. Contohnya sebagai berikut.
 
 | Kode | Sebelum → Sesudah | Alasan |
 |---|---|---|
@@ -81,6 +84,15 @@ python3 scripts/periksa.py naskah.md --ragam populer  # longgarkan aturan ragam 
 python3 scripts/periksa.py naskah.md --fix keluar.md  # terapkan perbaikan yang aman, simpan ke berkas baru
 python3 scripts/periksa.py naskah.md --json           # keluaran JSON untuk otomasi
 ```
+
+### Memenggal kata
+
+```bash
+python3 scripts/penggal.py ber+jalan makan+an meng+akhir+i intro+speksi menutup BKKBN
+python3 scripts/penggal.py --tex makan+an per+tanggung+jawab+kan   # \hyphenation{...} untuk preambel LaTeX
+```
+
+Tanda `+` menandai batas morfem (awalan, akhiran, partikel, unsur gabungan) karena skrip tidak mengenali morfem sendiri; jangan beri `+` pada dasar yang luluh (*menutup* → *me-nu-tup*). Tanda `.` memaksa batas suku (*ma.in*) dan `_` melarangnya (*se_udati*). Pasangan *ai, au, ei, oi, eu* ditebak dan diberi catatan `[cek KBBI]`. Pemeriksa `periksa.py` juga menilai penggalan buatan penulis (kategori `N-penggal`): kata terpotong di akhir baris, `\hyphenation{}`, dan `\-` di LaTeX.
 
 Kode keluar `0` berarti tidak ada ERROR; `1` berarti ada. WARNING tidak memengaruhi kode keluar. Kategori `B-gaya` (pembuka klise, kata kabur, penguat kosong, penyangga bertumpuk, verba lemah, kalimat seragam) selalu WARNING karena menyangkut *baik*, bukan *benar*.
 
