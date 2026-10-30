@@ -5,7 +5,7 @@
 Tujuan tulisan adalah dipahami. Padanan KBBI/Badan Bahasa **tidak wajib** dipakai jika belum populer di kalangan pembaca sasaran, tetapi padanan itu **tetap disertakan sebagai penjelasan** agar pembaca mengenalnya dan tulisan tetap "berbahasa Indonesia". Kaidahnya:
 
 1. **Kelas A — padanan sudah populer**: pakai padanan Indonesia langsung, tanpa istilah asing. Contoh: *data, analisis, unduh, unggah, daring, luring, tautan, gawai, peramban, warganet, swafoto, penyintas, pemangku kepentingan, pindai, pemindai, tenggat, nirkabel, media sosial, aplikasi*.
-2. **Kelas B — padanan dikenal tetapi istilah asing masih lebih lazim di bidangnya**: pakai padanan Indonesia, lalu istilah asing dalam kurung (miring) pada penyebutan **pertama**; selanjutnya padanan saja. Contoh: *pembelajaran mesin (machine learning)*, *mahadata (big data)*, *penambangan data (data mining)*, *kecerdasan buatan (artificial intelligence, AI)*.
+2. **Kelas B — padanan dikenal tetapi istilah asing masih lebih lazim di bidangnya**: pakai padanan Indonesia, lalu istilah asing dalam kurung (miring) pada penyebutan **pertama**; selanjutnya padanan saja. Contoh: *mahadata (big data)*, *niaga elektronik (e-commerce)*, *kecerdasan buatan (artificial intelligence, AI)*. Kelas B **tidak berlaku** untuk istilah matematika, statistika, dan *machine learning*; untuk bidang itu lihat `istilah-bidang.md`.
 3. **Kelas C — padanan KBBI belum populer / berisiko tidak dipahami**: pakai istilah asing (miring) sebagai istilah utama, lalu padanan KBBI dalam kurung pada penyebutan pertama sebagai penjelasan; selanjutnya istilah asing (miring) secara konsisten. Contoh: **podcast* (siniar)*, **mouse* (tetikus)*, **marketplace* (lokapasar)*, **overfitting* (kelewat pas)*.
 4. **Nama diri, nama produk, merek, nama metode yang sudah jadi nama** tidak diterjemahkan dan tidak dimiringkan: *Python, R, Stan, Google, BPS*. Nama metode yang berupa frasa umum (*random forest*, *gradient boosting*) diperlakukan sebagai istilah asing Kelas C: miring, padanan dalam kurung pada penyebutan pertama, lalu konsisten.
 5. **Konsistensi**: satu konsep, satu istilah, di seluruh naskah. Buat glosarium di awal/akhir dokumen panjang jika Kelas C banyak.
@@ -19,7 +19,7 @@ Tujuan tulisan adalah dipahami. Padanan KBBI/Badan Bahasa **tidak wajib** dipaka
 | Kelas | Pola | Contoh |
 |---|---|---|
 | A | padanan | *Data diunduh dari situs BPS.* |
-| B | padanan (*asing*) | *Model pembelajaran mesin (*machine learning*) dilatih dengan ...* |
+| B | padanan (*asing*) | *Toko itu beralih ke niaga elektronik (*e-commerce*) ...* |
 | C | *asing* (padanan) | *Materi dibagikan melalui *podcast* (siniar) mingguan.* |
 | Singkatan | kepanjangan (SINGKATAN) | *kecerdasan buatan (*artificial intelligence*, AI)* |
 
@@ -29,23 +29,25 @@ Gunakan **kurung** untuk padanan/istilah, **petik tunggal** untuk makna: *outlie
 
 Kelas ditandai A/B/C sebagai default untuk pembaca akademik/instansi Indonesia; sesuaikan dengan pembaca.
 
+> **Istilah matematika, statistika, dan *machine learning*** mengikuti aturan khusus di `istilah-bidang.md`, yang menggantikan Kelas B untuk bidang itu: padanan yang sudah populer dipakai tegak; padanan yang belum populer diganti istilah Inggris miring (padanan dalam kurung sekali). Daftar bawaan per bidang ada di sana. Baris bertanda † di bawah sudah disesuaikan dengan aturan itu.
+
 | Istilah asing | Padanan (KBBI/Badan Bahasa) | Kelas |
 |---|---|---|
 | dataset | gugus data, set data | B |
 | database | basis data, pangkalan data | A (basis data) |
 | big data | mahadata | B |
 | data mining | penambangan data | B |
-| machine learning | pembelajaran mesin | B |
-| deep learning | pembelajaran mendalam | B |
+| machine learning | pemelajaran mesin | C † |
+| deep learning | pemelajaran mendalam | C † |
 | artificial intelligence | kecerdasan buatan, kecerdasan artifisial | A/B |
-| neural network | jaringan saraf tiruan | B |
+| neural network | jaringan saraf tiruan | C † |
 | training / testing (data) | data latih / data uji | A |
 | validation | validasi | A |
 | overfitting / underfitting | kelewat pas / kurang pas | C |
 | outlier | pencilan | A |
 | missing value | nilai hilang, data hilang | A |
 | imputation | imputasi | A |
-| clustering | pengklasteran, penggerombolan | B |
+| clustering | pengklasteran, penggerombolan | C † |
 | classification | klasifikasi | A |
 | regression | regresi | A |
 | variable | peubah, variabel | A (pilih satu, konsisten) |
@@ -62,10 +64,10 @@ Kelas ditandai A/B/C sebagai default untuk pembaca akademik/instansi Indonesia; 
 | hypothesis testing | pengujian hipotesis | A |
 | benchmark | tolok ukur | A/B |
 | baseline | garis dasar, acuan | B |
-| pipeline | alur kerja, pipa data | B/C |
+| pipeline | alur kerja, pipa data | C † |
 | preprocessing | prapemrosesan, praolah | B |
 | feature (ML) | fitur, ciri | A |
-| feature engineering | rekayasa fitur | B |
+| feature engineering | rekayasa fitur | C † |
 | hyperparameter | hiperparameter | A |
 | tuning | penalaan | C |
 | cross-validation | validasi silang | A |

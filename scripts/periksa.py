@@ -185,6 +185,22 @@ DIKSI = [
 ]
 
 # Gaya (kategori B-gaya): klise, kata kabur, penguat kosong, penyangga bertumpuk — WARNING, dinilai dalam konteks
+
+# A-bidang: istilah matematika, statistika, dan machine learning (references/istilah-bidang.md)
+ASING_BIDANG = ["overfitting","underfitting","cross-validation","bootstrap","holdout","tuning",
+    "grid search","random search","random forest","gradient boosting","machine learning","deep learning",
+    "out-of-bag","leave-one-out","pipeline","workflow","deployment","resampling","early stopping",
+    "learning rate","dropout","embedding","double descent","likelihood","feature engineering",
+    "neural network","clustering","learning curve","trade-off"]
+PADANAN_BELUM_POPULER = {
+    "kelewat pas":"overfitting","penalaan":"tuning","pemelajaran mesin":"machine learning",
+    "pembelajaran mesin":"machine learning","pemelajaran mendalam":"deep learning",
+    "pengklasteran":"clustering","penggerombolan":"clustering","penarikan sampel ulang":"resampling",
+    "derau":"noise","tarik-ulur bias":"bias–variance trade-off","matriks topi":"hat matrix",
+    "laju galat semu":"apparent error rate","kurva belajar":"learning curve","kebaikan suai":"goodness of fit",
+    "lipatan":"fold","rekayasa fitur":"feature engineering",
+}
+
 GAYA=[
  (r"^\s*(di|dalam|pada) era (digital|globalisasi|modern|industri 4\.0|society 5\.0|disrupsi|teknologi)[^.]*", "pembuka klise zaman; mulai dari fakta atau masalah spesifik"),
  (r"^\s*(dewasa ini|seiring (dengan )?perkembangan (zaman|teknologi)|sebagaimana (yang )?kita ketahui|seperti (yang )?kita ketahui|tidak dapat dipungkiri|tak dapat dipungkiri|pada dasarnya|pada hakikatnya|sebenarnya|perlu diketahui bahwa|dapat dikatakan bahwa)\b", "pengantar hampa/klise; mulai dari isinya"),
@@ -344,6 +360,19 @@ def periksa(teks, ragam="ilmiah"):
                 if not dlm_miring(m.start(),m.end()):
                     kat="A-aparat" if any(k in saran for k in ("rujuk dengan nomor","subjek berkata depan)","klaim kuat","sumber tanpa sitasi","lompatan penalaran","lebih langsung","judul:")) else "B-gaya"
                     add(i,kat,"WARNING",bb[m.start():m.end()][:60],saran)
+        # A-bidang: istilah bidang (lihat references/istilah-bidang.md)
+        lindung=[(m.start(),m.end()) for m in re.finditer(r"`[^`\n]*`|\$[^$\n]*\$",bb)]
+        def dlm_lindung(a,b2): return any(x<=a and b2<=y for x,y in lindung)
+        def dlm_kurung(a): 
+            k=bb.rfind("(",0,a); return k!=-1 and bb.find(")",k,a)==-1
+        for ist in ASING_BIDANG:
+            for m in re.finditer(r"(?<![\w-])"+re.escape(ist)+r"(?![\w])",low):
+                if dlm_miring(m.start(),m.end()) or dlm_lindung(m.start(),m.end()): continue
+                add(i,"A-bidang","WARNING",bb[m.start():m.end()],f"*{ist}* — istilah asing bidang ditulis miring; imbuhan/partikel dengan tanda hubung (*{ist}*-nya); abaikan bila nama paket/fungsi (pakai format kode)")
+        for pad,ist in PADANAN_BELUM_POPULER.items():
+            for m in re.finditer(r"(?<![\w-])"+re.escape(pad)+r"(?![\w-])",low):
+                if dlm_miring(m.start(),m.end()) or dlm_lindung(m.start(),m.end()) or dlm_kurung(m.start()): continue
+                add(i,"A-bidang","WARNING",bb[m.start():m.end()],f"padanan belum populer; pakai *{ist}* (miring) dengan '{pad}' dalam kurung pada kemunculan pertama; abaikan bila konvensi naskah memakai padanan ini"+(" atau bila 'lipatan' bukan bagian data validasi silang" if pad=="lipatan" else ""))
         # R: ragam cakapan
         if ragam=="ilmiah":
             for salah,benar in RAGAM_CAKAPAN.items():

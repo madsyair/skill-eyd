@@ -21,7 +21,8 @@ eyd/
 │   ├── kata-hubung.md               # konjungsi tiga tingkat, korelatif, pasangan yang sering tertukar
 │   ├── menulis-baik.md              # sisi 'baik': kejelasan, kekonkretan, gaya, struktur per jenis tulisan
 │   ├── aparat-karya-ilmiah.md       # pola paragraf, argumentasi, kutipan/sitasi, tabel-gambar, judul, notasi
-│   └── istilah-dan-kbbi.md          # kebijakan istilah asing vs padanan KBBI + glosarium sains data
+│   ├── istilah-dan-kbbi.md          # kebijakan istilah asing vs padanan KBBI + glosarium sains data
+│   └── istilah-bidang.md            # istilah matematika, statistika, ML: padanan populer vs istilah Inggris miring
 ├── scripts/
 │   ├── periksa.py                   # pemeriksa otomatis (Python 3, tanpa dependensi)
 │   └── penggal.py                   # pemenggal kata EYD V + keluaran \hyphenation{} untuk LaTeX
@@ -31,6 +32,7 @@ eyd/
     ├── contoh-bersih.md             # harus 0 temuan
     ├── contoh-kapital-istilah.md
     ├── contoh-konjungsi.md
+    ├── contoh-istilah-bidang.md     # istilah bidang tanpa miring / padanan belum populer (A-bidang)
     ├── contoh-gaya.md
     ├── contoh-latex.tex
     ├── contoh-penggalan.md          # pemenggalan salah di akhir baris

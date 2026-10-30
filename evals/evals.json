@@ -1,80 +1,88 @@
 {
- "skill_name": "eyd",
- "evals": [
-  {
-   "id": 1,
-   "prompt": "Perbaiki bahasa naskah ini sesuai EYD V dan buat kalimatnya efektif. Beri catatan perubahan.",
-   "files": [
-    "evals/contoh-bermasalah.md"
-   ],
-   "expected_output": "Teks suntingan yang lolos periksa.py dengan 0 ERROR; catatan perubahan berkode per kategori; makna asli dipertahankan."
-  },
-  {
-   "id": 2,
-   "prompt": "Tulis abstrak (±200 kata) artikel jurnal tentang pendugaan area kecil untuk kemiskinan tingkat kecamatan dengan data Susenas, ragam ilmiah.",
-   "files": [],
-   "expected_output": "Abstrak satu paragraf padu: latar–tujuan–metode–hasil–implikasi; lolos periksa.py; istilah asing memakai pola Kelas A/B/C."
-  },
-  {
-   "id": 3,
-   "prompt": "Mana yang benar: 'di mana' atau 'dimana'? Dan kapan 'Maha' ditulis terpisah?",
-   "files": [],
-   "expected_output": "Menjelaskan kata depan vs awalan dengan uji cepat, dan kaidah EYD V bahwa maha + sifat/nama Tuhan ditulis terpisah dengan kapital, mahasiswa serangkai."
-  },
-  {
-   "id": 4,
-   "prompt": "Periksa naskah ini.",
-   "files": [
-    "evals/contoh-bersih.md"
-   ],
-   "expected_output": "Menyatakan naskah sudah sesuai kaidah; tidak mengada-adakan kesalahan; paling banyak saran gaya minor (mis. 'sangat kecil' → beri angka)."
-  },
-  {
-   "id": 5,
-   "prompt": "Perbaiki penggunaan kata hubung dalam naskah ini dan jelaskan alasannya.",
-   "files": [
-    "evals/contoh-konjungsi.md"
-   ],
-   "expected_output": "Semua konjungsi salah tingkat (namun di tengah, Sementara/Yang di awal, sehingga+koma, korelatif salah pasang, maka ganda) diperbaiki; penjelasan merujuk kata-hubung.md; hasil lolos periksa.py."
-  },
-  {
-   "id": 6,
-   "prompt": "Periksa naskah LaTeX ini.",
-   "files": [
-    "evals/contoh-latex.tex"
-   ],
-   "expected_output": "Hanya 'Sehingga' di awal kalimat dan 'terdiri dari' yang dilaporkan ERROR; numeralia (Ketiga keluarga), subjek (Akibatnya tajam), 'Lebih jauh lagi,', kalimat tanya 'Di mana ...?', dan klausa setelah rumus tampilan tidak ditandai."
-  },
-  {
-   "id": 7,
-   "prompt": "Tulis ulang paragraf ini agar menjadi tulisan yang baik, bukan sekadar benar.",
-   "files": [
-    "evals/contoh-gaya.md"
-   ],
-   "expected_output": "Pembuka klise dihapus dan diganti fakta/masalah spesifik; klaim kabur (cukup baik, berbagai faktor, pihak terkait) diganti angka/nama konkret atau dihapus; penguat/penyangga bertumpuk dan rangkaian sinonim dihilangkan; verba lemah diganti; penutup hampa diganti implikasi; hasil lolos periksa.py tanpa B-gaya."
-  },
-  {
-   "id": 8,
-   "prompt": "Periksa pemenggalan kata di akhir baris pada naskah ini dan perbaiki.",
-   "files": [
-    "evals/contoh-penggalan.md"
-   ],
-   "expected_output": "Melaporkan i-/tu, ma-/u, mengakhir-/i (2d), BKK-/BN (5), pen-/yuluhan (1g) sebagai salah; rum-/put dan meng-/ukur dinilai benar (meng-ukur sah karena dasar 'ukur' tidak luluh); perbaikan: itu, mau, meng-/akhiri, BKKBN utuh, pe-/nyuluhan atau penyu-/luhan; merujuk butir EYD V II.C."
-  },
-  {
-   "id": 9,
-   "prompt": "Periksa preambel LaTeX ini, khususnya \\hyphenation dan \\-.",
-   "files": [
-    "evals/contoh-penggalan.tex"
-   ],
-   "expected_output": "a-khir (2d), an-gin (1g dan 2d: angin tidak dipenggal), BP-S (5), ma\\-u (2d) dilaporkan; maka-nan dinilai salah menurut 2a (seharusnya ma-kan-an) meskipun harness tidak menandainya; ma-kan-an dan pen\\-dekatan sah; menyarankan \\mbox{BPS} bila perlu."
-  },
-  {
-   "id": 10,
-   "prompt": "Bagaimana memenggal kata pertanggungjawaban, mengakhiri, saudara, introspeksi, dan menyapu menurut EYD V?",
-   "files": [],
-   "expected_output": "per-tanggung-jawab-an (titik di batas morfem, di dalam dasar boleh per suku: per-tang-gung-ja-wab-an); meng-akhiri (bukan me-ngakhiri, tidak boleh mengakhir-i); sau-da-ra (diftong au); intro-speksi (unsur gabungan, kaidah 3); me-nya-pu (dasar luluh, 2b); tiap jawaban menyebut butir II.C."
-  }
- ],
- "cara_uji_harness": "python3 scripts/periksa.py evals/contoh-bermasalah.md → harus ada ERROR; evals/contoh-bersih.md → 0 ERROR, WARNING hanya kategori B-gaya; evals/contoh-gaya.md → ≥10 WARNING B-gaya, 0 ERROR; evals/contoh-penggalan.md → 4 ERROR + 2 WARNING N-penggal; evals/contoh-penggalan.tex → 3 ERROR + 2 WARNING N-penggal; python3 scripts/penggal.py dengan contoh resmi II.C harus sama dengan teks EYD V kecuali cileuncang (eu ditandai [cek KBBI])"
+  "skill_name": "eyd",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Perbaiki bahasa naskah ini sesuai EYD V dan buat kalimatnya efektif. Beri catatan perubahan.",
+      "files": [
+        "evals/contoh-bermasalah.md"
+      ],
+      "expected_output": "Teks suntingan yang lolos periksa.py dengan 0 ERROR; catatan perubahan berkode per kategori; makna asli dipertahankan."
+    },
+    {
+      "id": 2,
+      "prompt": "Tulis abstrak (±200 kata) artikel jurnal tentang pendugaan area kecil untuk kemiskinan tingkat kecamatan dengan data Susenas, ragam ilmiah.",
+      "files": [],
+      "expected_output": "Abstrak satu paragraf padu: latar–tujuan–metode–hasil–implikasi; lolos periksa.py; istilah asing memakai pola Kelas A/B/C."
+    },
+    {
+      "id": 3,
+      "prompt": "Mana yang benar: 'di mana' atau 'dimana'? Dan kapan 'Maha' ditulis terpisah?",
+      "files": [],
+      "expected_output": "Menjelaskan kata depan vs awalan dengan uji cepat, dan kaidah EYD V bahwa maha + sifat/nama Tuhan ditulis terpisah dengan kapital, mahasiswa serangkai."
+    },
+    {
+      "id": 4,
+      "prompt": "Periksa naskah ini.",
+      "files": [
+        "evals/contoh-bersih.md"
+      ],
+      "expected_output": "Menyatakan naskah sudah sesuai kaidah; tidak mengada-adakan kesalahan; paling banyak saran gaya minor (mis. 'sangat kecil' → beri angka)."
+    },
+    {
+      "id": 5,
+      "prompt": "Perbaiki penggunaan kata hubung dalam naskah ini dan jelaskan alasannya.",
+      "files": [
+        "evals/contoh-konjungsi.md"
+      ],
+      "expected_output": "Semua konjungsi salah tingkat (namun di tengah, Sementara/Yang di awal, sehingga+koma, korelatif salah pasang, maka ganda) diperbaiki; penjelasan merujuk kata-hubung.md; hasil lolos periksa.py."
+    },
+    {
+      "id": 6,
+      "prompt": "Periksa naskah LaTeX ini.",
+      "files": [
+        "evals/contoh-latex.tex"
+      ],
+      "expected_output": "Hanya 'Sehingga' di awal kalimat dan 'terdiri dari' yang dilaporkan ERROR; numeralia (Ketiga keluarga), subjek (Akibatnya tajam), 'Lebih jauh lagi,', kalimat tanya 'Di mana ...?', dan klausa setelah rumus tampilan tidak ditandai."
+    },
+    {
+      "id": 7,
+      "prompt": "Tulis ulang paragraf ini agar menjadi tulisan yang baik, bukan sekadar benar.",
+      "files": [
+        "evals/contoh-gaya.md"
+      ],
+      "expected_output": "Pembuka klise dihapus dan diganti fakta/masalah spesifik; klaim kabur (cukup baik, berbagai faktor, pihak terkait) diganti angka/nama konkret atau dihapus; penguat/penyangga bertumpuk dan rangkaian sinonim dihilangkan; verba lemah diganti; penutup hampa diganti implikasi; hasil lolos periksa.py tanpa B-gaya."
+    },
+    {
+      "id": 8,
+      "prompt": "Periksa pemenggalan kata di akhir baris pada naskah ini dan perbaiki.",
+      "files": [
+        "evals/contoh-penggalan.md"
+      ],
+      "expected_output": "Melaporkan i-/tu, ma-/u, mengakhir-/i (2d), BKK-/BN (5), pen-/yuluhan (1g) sebagai salah; rum-/put dan meng-/ukur dinilai benar (meng-ukur sah karena dasar 'ukur' tidak luluh); perbaikan: itu, mau, meng-/akhiri, BKKBN utuh, pe-/nyuluhan atau penyu-/luhan; merujuk butir EYD V II.C."
+    },
+    {
+      "id": 9,
+      "prompt": "Periksa preambel LaTeX ini, khususnya \\hyphenation dan \\-.",
+      "files": [
+        "evals/contoh-penggalan.tex"
+      ],
+      "expected_output": "a-khir (2d), an-gin (1g dan 2d: angin tidak dipenggal), BP-S (5), ma\\-u (2d) dilaporkan; maka-nan dinilai salah menurut 2a (seharusnya ma-kan-an) meskipun harness tidak menandainya; ma-kan-an dan pen\\-dekatan sah; menyarankan \\mbox{BPS} bila perlu."
+    },
+    {
+      "id": 10,
+      "prompt": "Bagaimana memenggal kata pertanggungjawaban, mengakhiri, saudara, introspeksi, dan menyapu menurut EYD V?",
+      "files": [],
+      "expected_output": "per-tanggung-jawab-an (titik di batas morfem, di dalam dasar boleh per suku: per-tang-gung-ja-wab-an); meng-akhiri (bukan me-ngakhiri, tidak boleh mengakhir-i); sau-da-ra (diftong au); intro-speksi (unsur gabungan, kaidah 3); me-nya-pu (dasar luluh, 2b); tiap jawaban menyebut butir II.C."
+    },
+    {
+      "id": 11,
+      "prompt": "Sunting paragraf ini sesuai EYD V dan kebijakan istilah matematika, statistika, dan machine learning.",
+      "files": [
+        "evals/contoh-istilah-bidang.md"
+      ],
+      "expected_output": "Paragraf pertama: istilah Inggris bidang dimiringkan (*cross-validation*, *bootstrap*, *holdout*); padanan belum populer diganti istilah Inggris miring dengan padanan dalam kurung pada kemunculan pertama (*fold* (lipatan), *tuning* (penalaan), *overfitting* (kelewat pas), *noise* (derau), *learning curve* (kurva belajar)); paragraf kedua tidak diubah. Mengikuti references/istilah-bidang.md."
+    }
+  ],
+  "cara_uji_harness": "python3 scripts/periksa.py evals/contoh-bermasalah.md → harus ada ERROR; evals/contoh-bersih.md → 0 ERROR, WARNING hanya kategori B-gaya; evals/contoh-gaya.md → ≥10 WARNING B-gaya, 0 ERROR; evals/contoh-penggalan.md → 4 ERROR + 2 WARNING N-penggal; evals/contoh-penggalan.tex → 3 ERROR + 2 WARNING N-penggal; python3 scripts/penggal.py dengan contoh resmi II.C harus sama dengan teks EYD V kecuali cileuncang (eu ditandai [cek KBBI]); evals/contoh-istilah-bidang.md → ≥8 WARNING A-bidang, semuanya di paragraf pertama, 0 temuan A-bidang di paragraf kedua"
 }
