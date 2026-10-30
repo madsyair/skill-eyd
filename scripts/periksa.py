@@ -310,6 +310,7 @@ def periksa(teks, ragam="ilmiah"):
         # hapus kutipan miring/asing dari pemeriksaan kata baku? (istilah asing diizinkan) — tetap diperiksa, tetapi lewati URL & sitasi
         bb=re.sub(r"https?://\S+","",b)
         bb=re.sub(r"\([A-Z][^()]{0,60}\d{4}[^()]{0,20}\)","(SITASI)",bb)  # (Alwi, 2010)
+        bb=re.sub(r"\$\$[^$]*\$\$|\$[^$\n]+\$",lambda m:"$"+" "*(len(m.group())-2)+"$",bb)  # isi rumus LaTeX tidak diperiksa (mis. \tau bukan kata "tau")
         low=bb.lower()
         miring=[(m.start(),m.end()) for m in re.finditer(r"\*[^*\n]+\*|_[^_\n]+_",bb)]
         def dlm_miring(a,b2): return any(x<=a and b2<=y for x,y in miring)
