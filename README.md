@@ -148,6 +148,19 @@ Laporan kesalahan yang paling berguna berbentuk satu kalimat contoh + apa yang d
 
 Tambahkan kasusnya ke `evals/` bila memungkinkan. Pola yang hanya benar dengan konteks sintaksis (misalnya kata berfungsi ganda) masuk sebagai WARNING, bukan ERROR.
 
+## Riwayat perubahan
+
+### 2026-11-06 — temuan penyuntingan seri buku statistika Bayesian
+
+Pemutakhiran dari penyuntingan tiga naskah buku teknis (±1.000 halaman):
+
+- **Koma sebelum konjungsi subordinatif** (EYD V B.4). `periksa.py` kini memberi ERROR untuk *, sehingga / , agar / , supaya / , karena itu* dan WARNING untuk *, karena / , jika / , meskipun / , ketika / , setelah / …* di tengah kalimat. Sebelumnya hanya koma *sesudah* *sehingga* yang diperiksa, sehingga ±440 kesalahan lolos. Rincian dan pengecualian sah (koma penutup sisipan/aposisi, B.13) di `inventaris-kesalahan.md` T3a–T3b.
+- **Subjek sitasi naratif hanya penulis orang**. Manual, panduan, dokumentasi paket, dan lembaga tidak dijadikan subjek kalimat; faktanya ditulis langsung dengan sitasi kurung (`aparat-karya-ilmiah.md` §4d; WARNING di `periksa.py`).
+- **Judul tabel dan gambar singkat** (≤ 12 kata, satu frasa) dengan penjelasan sebagai catatan di bawahnya; gambar berpanel memakai (a), (b), (c); subjudul bukan kalimat tanya; tidak ada isi melewati tepi halaman (`aparat-karya-ilmiah.md` §5–6).
+- **Nama tidak dipenggal**, termasuk nama asing satu kata; cara mendaftarkannya di LaTeX dengan `\babelhyphenation` (`pemenggalan-kata.md` §4).
+- **Istilah**: *random draw* → membangkitkan / nilai bangkitan, bukan "tarikan acak" (`istilah-dan-kbbi.md`).
+- Kasus uji baru `evals/contoh-koma-subordinatif.md` (eval 11).
+
 ## Sumber
 
 - Badan Pengembangan dan Pembinaan Bahasa. 2022. *Ejaan Bahasa Indonesia yang Disempurnakan Edisi V*. Keputusan Kepala Badan Nomor 0424/I/BS.00.01/2022. https://ejaan.kemendikdasmen.go.id/eyd/

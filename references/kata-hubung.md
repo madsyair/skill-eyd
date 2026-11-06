@@ -81,6 +81,7 @@ Kaidah pokok: **konjungsi intrakalimat tidak mengawali kalimat baru; konjungsi a
 | *Namun demikian,* | *Namun,* atau *Meskipun demikian,* | *namun* sudah bermakna pertentangan; *demikian* mubazir (bentuk ini dipersoalkan Badan Bahasa) |
 | *Sehingga ...* di awal kalimat | *Oleh karena itu,* / *Akibatnya,* / *Dengan demikian,* atau gabungkan | *sehingga* intrakalimat |
 | *..., sehingga, ...* (koma setelah *sehingga*) | *... sehingga ...* | konjungsi intrakalimat tidak diikuti koma |
+| *..., sehingga ...* / *..., karena ...* / *..., agar ...* / *..., jika ...* (koma sebelum, induk di depan) | *... sehingga ...* (tanpa koma) | EYD V B.4: koma hanya bila anak kalimat mendahului induk; kecuali koma penutup aposisi (B.13). Kesalahan paling sering pada naskah teknis. |
 | *Sedangkan ...* di awal kalimat | *Sementara itu,* / *Sebaliknya,* / *Adapun ...* atau gabungkan: *..., sedangkan ...* | *sedangkan* intrakalimat |
 | *Sementara ...* (maksud pertentangan) di awal kalimat | *Sementara itu, ...* (antarkalimat) atau *..., sedangkan ...* | *sementara* = konjungsi waktu ('selagi') |
 | *Karena ...* tanpa induk kalimat | *Karena ..., ...* (tambah induk) atau *Oleh karena itu,* / *Sebab,* (cakapan) | anak kalimat tidak berdiri sendiri |
