@@ -51,6 +51,8 @@ Kelas ditandai A/B/C sebagai default untuk pembaca akademik/instansi Indonesia; 
 | variable | peubah, variabel | A (pilih satu, konsisten) |
 | random variable | peubah acak | A |
 | sampling | penarikan sampel, pencuplikan | A |
+| random draw (simulasi dari distribusi) | membangkitkan, nilai bangkitan, nilai acak (bukan "tarikan acak", kalke *draw*) | A |
+| draws (keluaran MCMC) | *draws* (miring) bila belum ada padanan yang lazim; jelaskan sekali | C |
 | sample / population | sampel / populasi | A |
 | bias | bias | A |
 | estimate / estimator | dugaan, penduga / estimasi, estimator | A (konsisten) |

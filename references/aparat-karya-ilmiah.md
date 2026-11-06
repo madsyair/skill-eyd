@@ -86,6 +86,8 @@ Ringkasan (memadatkan beberapa halaman menjadi beberapa kalimat) juga wajib disi
 - Peraturan: *Undang-Undang Nomor 12 Tahun 2012 tentang Pendidikan Tinggi*; selanjutnya *UU 12/2012*.
 - Sitasi bukan pengganti kalimat: ~~*Kemiskinan turun (BPS, 2025).*~~ boleh, tetapi lebih baik *BPS (2025) mencatat kemiskinan turun menjadi 8,6%.*
 - Setiap sumber yang disitasi harus ada di daftar pustaka, dan sebaliknya.
+- **Subjek sitasi naratif hanya penulis orang**: *Gelman dkk. (2026) menyatakan …*. Manual, panduan, dokumentasi atau halaman bantuan paket, glosarium, *vignette*, situs, rilis, dan lembaga (mis. *Stan Development Team*, *R Core Team*, BPS) **tidak dijadikan subjek** (~~*Panduan Pengguna Stan menyatakan …*~~, ~~*Menurut dokumentasi loo, …*~~): tulis faktanya langsung dan beri sitasi kurung: *Nilai E-BFMI di bawah 0,3 diberi peringatan (Stan Development Team, 2026).* (Gaya selingkung yang lebih ketat daripada APA; temuan penyuntingan seri buku 2026-11.)
+- Sitasi penulis–tahun tanpa halaman/bagian bila gaya selingkung menghendaki; lokasi disimpan di catatan verifikasi, bukan di teks.
 
 ### 4e. Daftar pustaka
 Urut alfabetis nama belakang (nama Indonesia tanpa marga: tulis apa adanya, tanpa dibalik, kecuali gaya selingkung mengharuskan). Format APA 7:
@@ -108,10 +110,13 @@ Plagiarisme (termasuk swaplagiarisme dari karya sendiri tanpa sitasi), fabrikasi
 - Satuan di judul kolom, bukan di setiap sel; angka rata kanan, desimal seragam; pemisah ribuan titik, desimal koma.
 - Gambar: sumbu berlabel dengan satuan, legenda, terbaca saat hitam-putih; jangan diagram pai untuk > 5 kategori.
 - Lampiran diberi nomor/huruf dan judul (*Lampiran 1. Kuesioner*), dirujuk dalam teks, ditempatkan setelah daftar pustaka.
+- **Judul tabel dan judul gambar singkat** (≤ 12 kata, satu frasa, tanpa kalimat kedua). Penjelasan (cara membaca, makna garis/warna, sumber, temuan) ditulis sebagai **catatan/keterangan di bawah** tabel atau gambar, bukan bagian judul. Gambar berpanel diberi label **(a), (b), (c)** di panel dan disebut di judul dengan frasa pendek per panel (≤ 6 kata): *Upah dan lama sekolah: (a) data, (b) garis posterior*; rujukan di teks *Gambar 3(a)*, bukan *panel kiri*. (Keputusan penulis seri buku 2026-11.)
+- **Tidak ada isi yang melewati tepi halaman**: rumus panjang dipecah (lingkungan *aligned/multline*), tabel lebar dipersempit atau diputar, keluaran kode dibungkus.
 
 ## 6. Judul, subjudul, penomoran, dan daftar berbutir
 
 - **Judul karya ilmiah**: spesifik, memuat peubah/objek/lokasi/metode utama, ≤ 12–15 kata, tanpa singkatan tak lazim, tanpa kata hampa (*Analisis mengenai ..., Studi tentang ..., Tinjauan terhadap ...*). Judul boleh dua bagian dengan titik dua: *Pendugaan Area Kecil Kemiskinan Kecamatan: Pendekatan Bayes Hierarkis Spasial*.
+- **Judul bab/subjudul tidak berupa kalimat tanya**; pertanyaan pemandu dipindah ke kalimat pertama subbab (*Lambatnya random walk di dimensi tinggi*, bukan *Mengapa random walk lambat?*).
 - **Judul bab/subjudul**: frasa nomina, bukan kalimat; paralel antar-subjudul setingkat (*Pengumpulan Data, Pengolahan Data, Analisis Data* — bukan *Pengumpulan Data, Mengolah Data, Analisis*); tidak diakhiri titik; hierarki konsisten (1, 1.1, 1.1.1 — maksimal tiga tingkat; angka terakhir tanpa titik: *1.1.1 Sumber Data*).
 - Kapital pada judul: semua kata kecuali kata tugas (*di, ke, dari, dan, yang, untuk, dengan, pada, sebagai*) yang tidak di awal.
 - **Daftar berbutir/bernomor**: bernomor jika urutan penting, berbutir jika tidak. Semua butir sejenis (semua frasa, atau semua kalimat). Kalimat pengantar lengkap diakhiri titik dua. Butir berupa frasa: tanpa titik akhir, atau koma antarbutir dan titik pada butir terakhir (pilih satu). Butir berupa kalimat: kapital dan titik. Jangan lebih dari 7–9 butir tanpa pengelompokan. Prosa yang berargumen jangan dipaksa menjadi butir.

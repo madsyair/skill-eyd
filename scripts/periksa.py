@@ -168,6 +168,14 @@ DIKSI = [
  (r",\s*(akan tetapi|oleh karena itu|selain itu|dengan demikian|meskipun demikian)\b",", ... → konjungsi antarkalimat tidak dipakai di tengah kalimat; pecah kalimat atau ganti intrakalimat (tetapi/sehingga/dan)","WARNING"),
  (r"\bnamun demikian\b","Namun, / Meskipun demikian, (bentuk 'namun demikian' dipersoalkan)","WARNING"),
  (r"\bsehingga,","sehingga (tanpa koma sesudahnya)","ERROR"),
+ (r",\s+(karena|sebab)\s+itu\b","'karena itu/sebab itu' adalah penghubung antarkalimat: pecah kalimat ('. Karena itu, ...') atau tulis '... karena ...' tanpa koma","ERROR"),
+ # EYD V B.4: tanpa koma bila induk mendahului anak kalimat (temuan penyuntingan seri buku
+ # 2026-11: +-440 ', sehingga' lolos karena hanya koma SESUDAH yang diperiksa). Koma penutup
+ # aposisi/keterangan tambahan (B.13) sah, mis. '..., misalnya X, sehingga ...': nilai dalam konteks.
+ (r"(?<!yaitu)(?<!yakni)(?<!misalnya),\s+(sehingga|agar|supaya)\b",
+  "tanpa koma sebelum sehingga/agar/supaya (EYD V B.4: induk mendahului anak kalimat), kecuali koma penutup aposisi","ERROR"),
+ (r"[a-z0-9)\]*_$],\s+(karena(?!\s+itu)|sebab(?!\s+itu)|jika|bila|apabila|kalau|meskipun|walaupun|kendati|ketika|setelah(?!\s+itu)|sebelum(?!\s+itu)|sejak(?!\s+itu)|selama(?!\s+itu))\b(?![^,.;]{0,25},)",
+  "tanpa koma sebelum konjungsi subordinatif bila induk mendahului anak kalimat (EYD V B.4); koma sah hanya penutup aposisi/keterangan tambahan","WARNING"),
  (r"\bselain daripada itu\b","Selain itu","ERROR"),
  (r"\btidak hanya\b[^.;]{1,80}?\b(namun|melainkan) juga\b","tidak hanya ... tetapi juga","ERROR"),
  (r"\bbukan hanya\b[^.;]{1,80}?\btetapi juga\b","bukan hanya ... melainkan juga","ERROR"),
@@ -180,6 +188,8 @@ DIKSI = [
  (r"\bguna untuk\b","untuk / guna","ERROR"),
  (r"\badalah karena\b","'adalah' + 'karena' rancu: 'penyebabnya adalah X' atau 'hal ini terjadi karena X'","WARNING"),
  (r",\s*sementara itu\b",", sementara / , sedangkan ('sementara itu' = antarkalimat)","WARNING"),
+ (r"\b(?:panduan(?: pengguna)?|manual(?: referensi)?|dokumentasi(?: paket)?|halaman bantuan|glosarium|vignette)\b[^.,;]{0,40}?\b(menyatakan|menyebut|menyebutkan|mencatat|menjelaskan|menganjurkan|menyarankan|merekomendasikan|mengingatkan|menegaskan)\b",
+  "manual/panduan/dokumentasi sebagai subjek: tulis faktanya langsung dengan sitasi kurung; subjek sitasi naratif hanya penulis orang","WARNING"),
  (r"\bmenurut [^,.]{2,60}? (mengatakan|menyatakan|menyebutkan|menjelaskan|berpendapat|mengemukakan)\b",
   "'Menurut X, ...' ATAU 'X mengatakan ...' (jangan keduanya)","ERROR"),
 ]

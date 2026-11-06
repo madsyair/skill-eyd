@@ -74,7 +74,15 @@
    "prompt": "Bagaimana memenggal kata pertanggungjawaban, mengakhiri, saudara, introspeksi, dan menyapu menurut EYD V?",
    "files": [],
    "expected_output": "per-tanggung-jawab-an (titik di batas morfem, di dalam dasar boleh per suku: per-tang-gung-ja-wab-an); meng-akhiri (bukan me-ngakhiri, tidak boleh mengakhir-i); sau-da-ra (diftong au); intro-speksi (unsur gabungan, kaidah 3); me-nya-pu (dasar luluh, 2b); tiap jawaban menyebut butir II.C."
+  },
+  {
+   "id": 11,
+   "prompt": "Periksa tanda koma sebelum kata hubung dan subjek sitasi dalam naskah ini, lalu perbaiki.",
+   "files": [
+    "evals/contoh-koma-subordinatif.md"
+   ],
+   "expected_output": "Paragraf 1: semua koma sebelum karena/sehingga/agar dihapus (EYD V B.4), termasuk 'peringkatnya seragam karena' yang didahului anak kalimat awal; ', karena itu' dipecah menjadi kalimat baru. Paragraf 2 tidak diubah: koma penutup sisipan ('bukan 6,' dan 'misalnya …,') sah (B.13), 'Karena datanya banyak,' sah (B.3), koma sebelum 'tetapi' sah (B.2), ', bila perlu,' sah. Paragraf 3: manual tidak dijadikan subjek; fakta ditulis langsung dengan sitasi kurung. Merujuk inventaris-kesalahan.md T3a/T3b."
   }
  ],
- "cara_uji_harness": "python3 scripts/periksa.py evals/contoh-bermasalah.md → harus ada ERROR; evals/contoh-bersih.md → 0 ERROR, WARNING hanya kategori B-gaya; evals/contoh-gaya.md → ≥10 WARNING B-gaya, 0 ERROR; evals/contoh-penggalan.md → 4 ERROR + 2 WARNING N-penggal; evals/contoh-penggalan.tex → 3 ERROR + 2 WARNING N-penggal; python3 scripts/penggal.py dengan contoh resmi II.C harus sama dengan teks EYD V kecuali cileuncang (eu ditandai [cek KBBI])"
+ "cara_uji_harness": "python3 scripts/periksa.py evals/contoh-bermasalah.md → harus ada ERROR; evals/contoh-bersih.md → 0 ERROR, WARNING hanya kategori B-gaya; evals/contoh-gaya.md → ≥10 WARNING B-gaya, 0 ERROR; evals/contoh-penggalan.md → 4 ERROR + 2 WARNING N-penggal; evals/contoh-penggalan.tex → 3 ERROR + 2 WARNING N-penggal; python3 scripts/penggal.py dengan contoh resmi II.C harus sama dengan teks EYD V kecuali cileuncang (eu ditandai [cek KBBI]); evals/contoh-koma-subordinatif.md → ERROR untuk ', sehingga', ', agar', ', karena itu'; WARNING untuk ', karena' (4 kemunculan, 2 di antaranya sah sebagai penutup sisipan) dan subjek 'Panduan … menyatakan'"
 }

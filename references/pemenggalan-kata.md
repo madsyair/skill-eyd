@@ -51,6 +51,8 @@ Penerapan pada istilah ilmiah (unsur terikat serapan): *auto-korelasi, hetero-sk
 
 Nama orang yang terdiri atas dua kata atau lebih dipenggal **di antara kata**, tidak di dalam kata dan tanpa tanda hubung: *Mohammad* ↵ *Tabrani*, *Wage* ↵ *Rudolf Supratman*, *Sutan Takdir* ↵ *Alisjahbana*. Salah: *Su-* ↵ *pratman*.
 
+Nama satu kata, termasuk nama asing dalam karya ilmiah (*Gelman*, *Mosteller*, *Wagenmakers*, *Bayes*, *Poisson*), **tidak dipenggal sama sekali**; pola babel bahasa Indonesia maupun Inggris dapat memotongnya (*Gelm-an*, *Fie-nberg*). Di LaTeX daftarkan tanpa titik penggal: `\babelhyphenation{Gelman Mosteller Wagenmakers Bayesian}` (tanpa pilihan bahasa agar berlaku untuk semua bahasa). Daftar dapat dibangkitkan dari nama penulis di `.bib` ditambah kata berhuruf kapital yang tidak pernah muncul berhuruf kecil. Periksa PDF: tidak boleh ada nama di akhir baris yang berakhir tanda hubung. (Temuan penyuntingan seri buku 2026-11: 13 nama terpenggal pada satu buku 250 halaman.)
+
 Praktik yang wajar diperluas (bukan kaidah tersurat, nilai sendiri): nama lembaga dan judul karya sebaiknya juga dipindah per kata.
 
 ## 5. Singkatan (II.C.5)
