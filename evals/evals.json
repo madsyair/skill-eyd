@@ -82,7 +82,15 @@
     "evals/contoh-koma-subordinatif.md"
    ],
    "expected_output": "Paragraf 1: semua koma sebelum karena/sehingga/agar dihapus (EYD V B.4), termasuk 'peringkatnya seragam karena' yang didahului anak kalimat awal; ', karena itu' dipecah menjadi kalimat baru. Paragraf 2 tidak diubah: koma penutup sisipan ('bukan 6,' dan 'misalnya …,') sah (B.13), 'Karena datanya banyak,' sah (B.3), koma sebelum 'tetapi' sah (B.2), ', bila perlu,' sah. Paragraf 3: manual tidak dijadikan subjek; fakta ditulis langsung dengan sitasi kurung. Merujuk inventaris-kesalahan.md T3a/T3b."
+  },
+  {
+   "id": 12,
+   "prompt": "Perbaiki notasi dan istilah statistika dalam naskah ini.",
+   "files": [
+    "evals/contoh-notasi-istilah.md"
+   ],
+   "expected_output": "Paragraf 1: 'Persamaan' di tengah kalimat → 'persamaan'; Beta(18,85, 281,15) → Beta(18,85; 281,15); 'kemungkinan maksimum' → *maximum likelihood*. Paragraf 2: 'tarikan acak' → nilai acak/nilai bangkitan; 'menarik sampel dari distribusi' → membangkitkan nilai dari distribusi. Paragraf 3 tidak diubah: 'Persamaan' di awal kalimat sah, Beta(1, 1) sah, 'penarikan sampel acak sederhana' sah (memilih unit dari populasi). Merujuk istilah-dan-kbbi.md dan aparat-karya-ilmiah.md §7."
   }
  ],
- "cara_uji_harness": "python3 scripts/periksa.py evals/contoh-bermasalah.md → harus ada ERROR; evals/contoh-bersih.md → 0 ERROR, WARNING hanya kategori B-gaya; evals/contoh-gaya.md → ≥10 WARNING B-gaya, 0 ERROR; evals/contoh-penggalan.md → 4 ERROR + 2 WARNING N-penggal; evals/contoh-penggalan.tex → 3 ERROR + 2 WARNING N-penggal; python3 scripts/penggal.py dengan contoh resmi II.C harus sama dengan teks EYD V kecuali cileuncang (eu ditandai [cek KBBI]); evals/contoh-koma-subordinatif.md → ERROR untuk ', sehingga', ', agar', ', karena itu'; WARNING untuk ', karena' (4 kemunculan, 2 di antaranya sah sebagai penutup sisipan) dan subjek 'Panduan … menyatakan'"
+ "cara_uji_harness": "python3 scripts/periksa.py evals/contoh-bermasalah.md → harus ada ERROR; evals/contoh-bersih.md → 0 ERROR, WARNING hanya kategori B-gaya; evals/contoh-gaya.md → ≥10 WARNING B-gaya, 0 ERROR; evals/contoh-penggalan.md → 4 ERROR + 2 WARNING N-penggal; evals/contoh-penggalan.tex → 3 ERROR + 2 WARNING N-penggal; python3 scripts/penggal.py dengan contoh resmi II.C harus sama dengan teks EYD V kecuali cileuncang (eu ditandai [cek KBBI]); evals/contoh-koma-subordinatif.md → ERROR untuk ', sehingga', ', agar', ', karena itu'; WARNING untuk ', karena' (4 kemunculan, 2 di antaranya sah sebagai penutup sisipan) dan subjek 'Panduan … menyatakan'; evals/contoh-notasi-istilah.md → 1 ERROR H-kapital (Persamaan di tengah kalimat) dan WARNING untuk pemisah parameter, kemungkinan maksimum, tarikan acak, menarik sampel dari distribusi"
 }

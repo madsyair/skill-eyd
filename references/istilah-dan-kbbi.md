@@ -50,16 +50,18 @@ Kelas ditandai A/B/C sebagai default untuk pembaca akademik/instansi Indonesia; 
 | regression | regresi | A |
 | variable | peubah, variabel | A (pilih satu, konsisten) |
 | random variable | peubah acak | A |
-| sampling | penarikan sampel, pencuplikan | A |
+| sampling (memilih unit dari populasi: survei, *bootstrap*) | penarikan sampel, menarik sampel (lebih mapan di statistika resmi daripada "pengambilan sampel") | A |
+| sampling (menghasilkan nilai dari distribusi: Monte Carlo, MCMC) | membangkitkan; fase/proses *sampler*: *sampling* (miring); bukan "menarik/mengambil sampel dari posterior" | A/C |
 | random draw (simulasi dari distribusi) | membangkitkan, nilai bangkitan, nilai acak (bukan "tarikan acak", kalke *draw*) | A |
-| draws (keluaran MCMC) | *draws* (miring) bila belum ada padanan yang lazim; jelaskan sekali | C |
+| draws (keluaran MCMC) | *draws* (miring) bila belum ada padanan yang lazim; jelaskan sekali dengan **jembatan istilah**: setara dengan "sampel posterior" pada Monte Carlo langsung, tetapi *draws* berurutan saling berkorelasi sehingga tidak setara dengan sampel bebas (ESS). Untuk Monte Carlo langsung (tanpa MCMC) "sampel posterior" tetap tepat | C |
 | sample / population | sampel / populasi | A |
 | bias | bias | A |
-| estimate / estimator | dugaan, penduga / estimasi, estimator | A (konsisten) |
+| estimate / estimator | estimasi / estimator (diestimasi, mengestimasi); hindari campur dengan taksiran/dugaan/penduga dalam satu naskah. "Small area estimation" → estimasi area kecil | A (konsisten) |
 | confidence interval | selang kepercayaan | A |
 | credible interval | selang kredibel | B |
 | prior / posterior | prior / posterior | C (istilah teknis; boleh tanpa padanan) |
-| likelihood | kemungkinan, likelihood | C |
+| likelihood | *likelihood* (miring; tidak diterjemahkan "kemungkinan", yang di bahasa Indonesia berarti *possibility*); *likelihood*-nya; *maximum likelihood*, *restricted maximum likelihood* (REML); "kemungkinan" tetap untuk arti umum | C |
+| noise | *noise* (miring), "*noise* pengamatan/proses", "rasio *signal-to-noise*"; padanan "derau" kurang dikenal pembaca statistika | C |
 | p-value | nilai-p | A |
 | hypothesis testing | pengujian hipotesis | A |
 | benchmark | tolok ukur | A/B |

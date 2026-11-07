@@ -168,6 +168,10 @@ DIKSI = [
  (r",\s*(akan tetapi|oleh karena itu|selain itu|dengan demikian|meskipun demikian)\b",", ... → konjungsi antarkalimat tidak dipakai di tengah kalimat; pecah kalimat atau ganti intrakalimat (tetapi/sehingga/dan)","WARNING"),
  (r"\bnamun demikian\b","Namun, / Meskipun demikian, (bentuk 'namun demikian' dipersoalkan)","WARNING"),
  (r"\bsehingga,","sehingga (tanpa koma sesudahnya)","ERROR"),
+ (r"\b(beta|gamma|n|normal)\(\s*\d+,\d+,\s*\d","pisahkan parameter dengan titik koma bila ada koma desimal: Beta(18,85; 281,15)","WARNING"),
+ (r"\bkemungkinan maksimum\b","maximum likelihood (miring); 'kemungkinan' berarti possibility","WARNING"),
+ (r"\btarikan acak\b|\bditarik dari (distribusi|posterior|prior)\b","membangkitkan / dibangkitkan dari distribusi (bukan kalke 'draw')","WARNING"),
+ (r"\b(menarik|mengambil) sampel dari (posterior|prior|distribusi)\b","membangkitkan nilai dari ... (penarikan sampel = memilih unit dari populasi)","WARNING"),
  (r",\s+(karena|sebab)\s+itu\b","'karena itu/sebab itu' adalah penghubung antarkalimat: pecah kalimat ('. Karena itu, ...') atau tulis '... karena ...' tanpa koma","ERROR"),
  # EYD V B.4: tanpa koma bila induk mendahului anak kalimat (temuan penyuntingan seri buku
  # 2026-11: +-440 ', sehingga' lolos karena hanya koma SESUDAH yang diperiksa). Koma penutup
@@ -325,6 +329,8 @@ def periksa(teks, ragam="ilmiah"):
                 add(i,"H-kapital","ERROR",m.group(),m.group().split()[0]+" "+nm.capitalize())
         for m in re.finditer(r"\bUndang-undang\b|\bundang-undang (dasar|nomor|no\.)",bb):
             add(i,"H-kapital","ERROR",m.group(),"Undang-Undang (kedua unsur kapital pada nama resmi)")
+        for m in re.finditer(r"(?<=[a-z,;)] )(Persamaan|Rumus|Subbab)\b",bb):
+            add(i,"H-kapital","ERROR",m.group(),m.group().lower()+" (huruf kecil di tengah kalimat; bukan nama diri)")
         for m in re.finditer(r"\b(tuhan|allah)\b",bb):
             add(i,"H-kapital","ERROR",m.group(),m.group().capitalize())
         for m in re.finditer(r"\b(?:ibu|bapak|saudara) (kota|negara|pertiwi)\b",bb): pass

@@ -126,8 +126,9 @@ Plagiarisme (termasuk swaplagiarisme dari karya sendiri tanpa sitasi), fabrikasi
 - **Peubah dan parameter miring** (*x, y, β, σ²*, *n*); **satuan, fungsi baku, dan singkatan tegak** (kg, km, log, exp, sin, max, RMSE); **vektor/matriks tebal** (**x**, **X**) atau sesuai gaya selingkung; bilangan tegak.
 - Spasi antara angka dan satuan (*5 kg, 25 °C, 3 m*), kecuali persen dan derajat sudut (*5%, 30°*). Lambang satuan tidak diberi titik dan tidak dijamakkan (*5 km*, bukan *5 kms.*).
 - Setiap lambang **didefinisikan pada kemunculan pertama** (*..., dengan n menyatakan ukuran sampel*), tidak didefinisikan ulang, dan tidak dipakai untuk dua hal.
-- Rumus tampilan diberi nomor di kanan *(1)* dan dirujuk sebagai *persamaan (1)* atau *Persamaan (1)* (konsisten). Rumus adalah bagian kalimat: beri koma/titik sesuai posisinya; kata sesudah rumus (*dengan, di mana* ✗ → *dengan*) tanpa kapital jika masih satu kalimat.
+- Rumus tampilan diberi nomor di kanan *(1)* dan dirujuk sebagai *persamaan (1)* — huruf kecil di tengah kalimat karena *persamaan* bukan nama diri; kapital hanya di awal kalimat (*Persamaan (1) menunjukkan …*). Di Quarto: `crossref-eq-prefix: "persamaan"` dan `@Eq-…` untuk rujukan di awal kalimat. Rumus adalah bagian kalimat: beri koma/titik sesuai posisinya; kata sesudah rumus (*dengan, di mana* ✗ → *dengan*) tanpa kapital jika masih satu kalimat.
 - Kalimat tidak dimulai dengan lambang atau angka: *Parameter β diduga ...* bukan *β diduga ...*.
+- **Pemisah parameter distribusi**: bila salah satu parameter memuat koma desimal, pisahkan parameter dengan titik koma agar tidak rancu: *Beta(18,85; 281,15)*, *N(0; 0,5)*, bukan *Beta(18,85, 281,15)*. Parameter bilangan bulat boleh tetap dengan koma: *Beta(1, 1)*.
 - Bilangan desimal dengan koma (*0,05*), pemisah ribuan titik; dalam rumus dan perangkat lunak boleh titik desimal jika gaya selingkung menghendaki — konsisten dalam satu naskah dan katakan di awal jika berbeda dari tabel.
 - Nilai-*p*: *p* miring, *p* < 0,05 (dengan spasi mengapit tanda); *R²* dengan superskrip; *n* = 250.
 - Singkatan statistik tegak dan diperkenalkan: *galat kuadrat rata-rata akar (root mean square error, RMSE)*.
