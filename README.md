@@ -163,7 +163,7 @@ Pemutakhiran dari penyuntingan tiga naskah buku teknis (±1.000 halaman):
 
 ### 2026-11-07 — notasi dan istilah statistika
 
-- *persamaan*, *rumus*, *subbab* huruf kecil di tengah kalimat (ERROR `H-kapital`); cara Quarto (`crossref-eq-prefix: "persamaan"`, `@Eq-` di awal kalimat).
+- *persamaan* huruf kecil di tengah kalimat (ERROR `H-kapital`); cara Quarto (`crossref-eq-prefix: "persamaan"`, `@Eq-` di awal kalimat).
 - Pemisah parameter distribusi bila ada koma desimal: *Beta(18,85; 281,15)* (WARNING).
 - Istilah: *likelihood* tidak diterjemahkan "kemungkinan" (*maximum likelihood*); *estimate* → estimasi (konsisten); *noise* (bukan "derau"); *sampling*: "penarikan sampel" untuk memilih unit dari populasi vs "membangkitkan"/*sampling* untuk nilai dari distribusi; *draws* dengan jembatan istilah ke "sampel posterior".
 - Pemenggalan: tanda hubung tertulis (*Jacobian-nya*) sah sebagai titik pindah baris; nama dikeluarkan dari daftar pemenggalan bahasa.

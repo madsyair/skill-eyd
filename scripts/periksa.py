@@ -329,7 +329,7 @@ def periksa(teks, ragam="ilmiah"):
                 add(i,"H-kapital","ERROR",m.group(),m.group().split()[0]+" "+nm.capitalize())
         for m in re.finditer(r"\bUndang-undang\b|\bundang-undang (dasar|nomor|no\.)",bb):
             add(i,"H-kapital","ERROR",m.group(),"Undang-Undang (kedua unsur kapital pada nama resmi)")
-        for m in re.finditer(r"(?<=[a-z,;)] )(Persamaan|Rumus|Subbab)\b",bb):
+        for m in re.finditer(r"(?<=[a-z,;)] )(Persamaan)\b",bb):
             add(i,"H-kapital","ERROR",m.group(),m.group().lower()+" (huruf kecil di tengah kalimat; bukan nama diri)")
         for m in re.finditer(r"\b(tuhan|allah)\b",bb):
             add(i,"H-kapital","ERROR",m.group(),m.group().capitalize())
