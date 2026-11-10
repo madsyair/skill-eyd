@@ -127,6 +127,19 @@ Plagiarisme (termasuk swaplagiarisme dari karya sendiri tanpa sitasi), fabrikasi
 - Spasi antara angka dan satuan (*5 kg, 25 °C, 3 m*), kecuali persen dan derajat sudut (*5%, 30°*). Lambang satuan tidak diberi titik dan tidak dijamakkan (*5 km*, bukan *5 kms.*).
 - Setiap lambang **didefinisikan pada kemunculan pertama** (*..., dengan n menyatakan ukuran sampel*), tidak didefinisikan ulang, dan tidak dipakai untuk dua hal.
 - Rumus tampilan diberi nomor di kanan *(1)* dan dirujuk sebagai *persamaan (1)* — huruf kecil di tengah kalimat karena *persamaan* bukan nama diri; kapital hanya di awal kalimat (*Persamaan (1) menunjukkan …*). Di Quarto: `crossref-eq-prefix: "persamaan"` dan `@Eq-…` untuk rujukan di awal kalimat. Rumus adalah bagian kalimat: beri koma/titik sesuai posisinya; kata sesudah rumus (*dengan, di mana* ✗ → *dengan*) tanpa kapital jika masih satu kalimat.
+- **Rumus tampilan (*display*) di tengah kalimat tidak membuka paragraf baru.** Rumus yang berdiri di baris sendiri tetap bagian kalimat yang mengapitnya. Jika paragraf naskah diberi indentasi baris pertama, teks lanjutan sesudah rumus **tidak diindentasi** karena kalimatnya belum selesai dan paragrafnya masih sama; huruf pertamanya kecil (*dengan*, *yaitu*, *sehingga*, *untuk*, *dan*). Indentasi dan huruf kapital sesudah rumus hanya dipakai bila memang dimulai paragraf baru (gagasan baru), dan dalam hal itu rumus ditutup titik.
+
+  | Situasi sesudah rumus | Huruf pertama | Indentasi | Tanda baca di ujung rumus |
+  |---|---|---|---|
+  | Kalimat berlanjut (*dengan n ukuran sampel*) | kecil | **tidak** | koma atau tanpa tanda baca |
+  | Kalimat selesai, paragraf berlanjut | kapital | **tidak** | titik |
+  | Paragraf baru (gagasan baru) | kapital | ya | titik |
+
+  Cara menerapkannya: **LaTeX** — jangan sisipkan baris kosong sebelum atau sesudah `equation`/`align`/`\[ \]` jika paragraf berlanjut; baris kosong adalah pemisah paragraf sehingga teks sesudahnya diindentasi (dan baris kosong sebelum rumus menambah spasi vertikal). Bila baris kosong terpaksa ada, awali lanjutan dengan `\noindent`. **Markdown/Quarto** — tulis `$$ … $$` menempel pada baris sebelum dan sesudahnya, tanpa baris kosong. **Word/Google Docs** — rumus diletakkan dalam paragrafnya sendiri, lalu teks lanjutan memakai gaya paragraf tanpa indentasi baris pertama (misalnya gaya *Body Text Continue*); jangan menekan Tab atau spasi untuk meniru indentasi.
+
+  > Galat baku penduga dihitung dengan
+  > $$\mathrm{SE}(\hat\theta)=\sqrt{\hat\sigma^2/n},$$
+  > dengan *n* menyatakan ukuran sampel. ← tanpa indentasi, huruf kecil
 - Kalimat tidak dimulai dengan lambang atau angka: *Parameter β diduga ...* bukan *β diduga ...*.
 - **Pemisah parameter distribusi**: bila salah satu parameter memuat koma desimal, pisahkan parameter dengan titik koma agar tidak rancu: *Beta(18,85; 281,15)*, *N(0; 0,5)*, bukan *Beta(18,85, 281,15)*. Parameter bilangan bulat boleh tetap dengan koma: *Beta(1, 1)*.
 - Bilangan desimal dengan koma (*0,05*), pemisah ribuan titik; dalam rumus dan perangkat lunak boleh titik desimal jika gaya selingkung menghendaki — konsisten dalam satu naskah dan katakan di awal jika berbeda dari tabel.
@@ -143,3 +156,4 @@ Plagiarisme (termasuk swaplagiarisme dari karya sendiri tanpa sitasi), fabrikasi
 - [ ] Judul spesifik tanpa kata hampa; subjudul paralel, frasa nomina, tanpa titik; hierarki ≤ 3 tingkat.
 - [ ] Daftar berbutir homogen; prosa argumentatif tidak dipaksa jadi butir.
 - [ ] Peubah miring, satuan tegak, lambang didefinisikan sekali, rumus bernomor dan dirujuk, desimal konsisten.
+- [ ] Teks lanjutan sesudah rumus tampilan tidak diindentasi dan berhuruf kecil bila kalimatnya berlanjut; tidak ada baris kosong di sekitar rumus yang memecah paragraf (LaTeX/Markdown).

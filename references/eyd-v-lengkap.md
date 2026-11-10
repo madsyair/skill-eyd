@@ -4,40 +4,52 @@ Sumber: Badan Pengembangan dan Pembinaan Bahasa, *Ejaan Bahasa Indonesia yang Di
 File ini adalah salinan bab-bab kaidah (Penggunaan Huruf, Penulisan Kata, Penggunaan Tanda Baca, Penulisan Unsur Serapan). Gunakan file ini hanya jika `eyd-v-ringkas.md` tidak menjawab pertanyaan; cari dengan grep pada judul bab di bawah.
 
 ## Daftar Isi
-- B. Huruf Vokal
-- D. Gabungan Huruf Vokal
-- F. Huruf Kapital
-- G. Huruf Miring
-- H. Huruf Tebal
-- A. Kata Dasar
-- B. Kata Turunan
-- C. Pemenggalan Kata
-- D. Kata Depan
-- E. Partikel
-- F. Singkatan
-- G. Angka dan Bilangan
-- H. Kata Ganti *ku-*, *kau-*, *-ku*, *-mu*, dan *-nya*
-- I. Kata Sandang *si* dan *sang*
-- A. Tanda Titik (.)
-- B. Tanda Koma (,)
-- C. Tanda Titik Koma (;)
-- D. Tanda Titik Dua (:)
-- E. Tanda Hubung (-)
-- F. Tanda Pisah (—)
-- G. Tanda Tanya (?)
-- H. Tanda Seru (!)
-- I. Tanda Elipsis (…)
-- J. Tanda Petik ("…")
-- K. Tanda Petik Tunggal ('…')
-- L. Tanda Kurung ((…))
-- M. Tanda Kurung Siku (\[…\])
-- N. Tanda Garis Miring (/)
-- O. Tanda Apostrof (')
-- IV. Penulisan Unsur Serapan
-- A. Penulisan Unsur Serapan Umum
-- B. Penulisan Unsur Serapan Khusus
+- **I. Penggunaan Huruf**: A. Huruf Abjad · B. Huruf Vokal · C. Huruf Konsonan · D. Gabungan Huruf Vokal · E. Gabungan Huruf Konsonan · F. Huruf Kapital · G. Huruf Miring · H. Huruf Tebal
+- **II. Penulisan Kata**: A. Kata Dasar · B. Kata Turunan · C. Pemenggalan Kata · D. Kata Depan · E. Partikel · F. Singkatan (dan Akronim) · G. Angka dan Bilangan · H. Kata Ganti *ku-*, *kau-*, *-ku*, *-mu*, dan *-nya* · I. Kata Sandang *si* dan *sang*
+- **III. Penggunaan Tanda Baca**: A. Tanda Titik (.) · B. Tanda Koma (,) · C. Tanda Titik Koma (;) · D. Tanda Titik Dua (:) · E. Tanda Hubung (-) · F. Tanda Pisah (—) · G. Tanda Tanya (?) · H. Tanda Seru (!) · I. Tanda Elipsis (…) · J. Tanda Petik ("…") · K. Tanda Petik Tunggal ('…') · L. Tanda Kurung ((…)) · M. Tanda Kurung Siku (\[…\]) · N. Tanda Garis Miring (/) · O. Tanda Apostrof (')
+- **IV. Penulisan Unsur Serapan**: A. Penulisan Unsur Serapan Umum · B. Penulisan Unsur Serapan Khusus
+
+Huruf bab berulang (A., B., ...) di setiap bab; cari dengan `grep -n "^# " references/eyd-v-lengkap.md`. Kelengkapan salinan ini terhadap situs resmi diperiksa dengan `python3 scripts/audit_cakupan.py` (lihat `peta-cakupan-eyd.md`). Salinan dicocokkan ulang dengan situs resmi pada 10 November 2026: bab I.A, I.C, dan I.E yang sebelumnya terlewat telah ditambahkan.
 
 ---
+
+
+<!-- SOURCE: penggunaan-huruf_huruf-abjad (ditambahkan 10 Nov 2026 dari https://ejaan.kemendikdasmen.go.id/eyd/penggunaan-huruf/huruf-abjad/) -->
+# I. PENGGUNAAN HURUF
+
+# A. Huruf Abjad
+
+Huruf dalam abjad bahasa Indonesia ada 26. Setiap huruf mempunyai bentuk kapital dan nonkapital.
+
+    Kapital | Nonkapital | Nama | Pengucapan
+    A | a | a | a
+    B | b | be | be
+    C | c | ce | ce
+    D | d | de | de
+    E | e | e | e
+    F | f | ef | ef
+    G | g | ge | ge
+    H | h | ha | ha
+    I | i | i | i
+    J | j | je | je
+    K | k | ka | ka
+    L | l | el | el
+    M | m | em | em
+    N | n | en | en
+    O | o | o | o
+    P | p | pe | pe
+    Q | q | qi | ki
+    R | r | er | er
+    S | s | es | es
+    T | t | te | te
+    U | u | u | u
+    V | v | ve | fe
+    W | w | we | we
+    X | x | eks | eks
+    Y | y | ye | ye
+    Z | z | zet | zet
+
+Catatan penyusun skill: nama huruf ini menentukan cara membaca singkatan yang dieja huruf demi huruf (*BPS* [be-pe-es], *PBB* [pe-be-be], *TV* [te-fe]); lihat `singkatan-akronim.md`.
 
 
 <!-- SOURCE: penggunaan-huruf_huruf-vokal -->
@@ -69,6 +81,37 @@ Vokal dalam bahasa Indonesia dilambangkan menjadi lima huruf, yaitu *a*, *e*, *i
 - Makanan ini membuat kerongkonganku seret \[sêrêt\].
 
 
+<!-- SOURCE: penggunaan-huruf_huruf-konsonan (ditambahkan 10 Nov 2026 dari https://ejaan.kemendikdasmen.go.id/eyd/penggunaan-huruf/huruf-konsonan/) -->
+# C. Huruf Konsonan
+
+Huruf yang melambangkan konsonan dalam bahasa Indonesia terdiri atas 21 huruf, yaitu *b*, *c*, *d*, *f*, *g*, *h*, *j*, *k*, *l*, *m*, *n*, *p*, *q*, *r*, *s*, *t*, *v*, *w*, *x*, *y*, dan *z*.
+
+    Huruf Konsonan | Contoh Posisi Awal | Contoh Posisi Tengah | Contoh Posisi Akhir
+    b | bahasa | sebut | adab
+    c | cakap | caca | -
+    d | dua | ada | abad
+    f | fakir | kafan | maaf
+    g | guna | tiga | mug
+    h | hari | saham | tuah
+    j | jalan | manja | mikraj
+    k | kami | paksa | politik
+    l | lekas | alas | akal
+    m | maka | kami | diam
+    n | nama | tanah | daun
+    p | pasang | apa | siap
+    q* | qariah | iqra | Benuaq
+    r | raih | bara | putar
+    s | sampai | asli | tangkas
+    t | tali | mata | rapat
+    v | variasi | lava | molotov
+    w | wanita | hawa | takraw
+    x* | xenon | marxisme | Max
+    y | yakin | payung | alay
+    z | zeni | lazim | juz
+
+\*) Huruf *q* dan *x* khusus digunakan untuk nama diri dan keperluan bidang tertentu. Huruf *x* pada posisi awal kata diucapkan \[s\] dan pada posisi tengah atau akhir diucapkan \[ks\].
+
+
 <!-- SOURCE: penggunaan-huruf_gabungan-huruf-vokal -->
 # D. Gabungan Huruf Vokal
 
@@ -88,6 +131,18 @@ Diftong dalam bahasa Indonesia dilambangkan dengan gabungan huruf vokal *ai*, *a
     au | au dit | t au fik | harim au
     ei | ei gendom | g ei ser | surv ei
     oi | oi kumene | b oi kot | kob oi
+
+
+<!-- SOURCE: penggunaan-huruf_gabungan-huruf-konsonan (ditambahkan 10 Nov 2026 dari https://ejaan.kemendikdasmen.go.id/eyd/penggunaan-huruf/gabungan-huruf-konsonan/) -->
+# E. Gabungan Huruf Konsonan
+
+Gabungan huruf konsonan *kh*, *ng*, *ny*, dan *sy* masing-masing melambangkan satu bunyi konsonan.
+
+    Gabungan Huruf Konsonan | Contoh Posisi Awal | Contoh Posisi Tengah | Contoh Posisi Akhir
+    kh | khusus | akhir | tarikh
+    ng | ngarai | bangun | senang
+    ny | nyata | banyak | -
+    sy | syarat | musyawarah | arasy
 
 
 <!-- SOURCE: penggunaan-huruf_huruf-kapital -->
@@ -403,6 +458,8 @@ Dalam naskah tulisan tangan atau mesin tik (bukan komputer), bagian yang akan di
 
 
 <!-- SOURCE: penulisan-kata_kata-dasar -->
+# II. PENULISAN KATA
+
 # A. Kata Dasar
 
 #### Kata dasar ditulis secara mandiri.
@@ -1143,6 +1200,8 @@ Penulisan yang seharusnya dilakukan adalah sebagai berikut.
 
 
 <!-- SOURCE: penggunaan-tanda-baca_tanda-titik -->
+# III. PENGGUNAAN TANDA BACA
+
 # A. Tanda Titik (.)
 
 #### 1. Tanda titik digunakan pada akhir kalimat pernyataan.

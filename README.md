@@ -13,7 +13,9 @@ Skill ini membedakan tulisan yang **benar** (kaidah EYD V dan tata bahasa) dari 
 eyd/
 ├── SKILL.md                         # alur kerja, rubrik, kebijakan istilah, format keluaran
 ├── references/
-│   ├── eyd-v-lengkap.md             # teks resmi EYD V (±13.000 kata) dari ejaan.kemendikdasmen.go.id
+│   ├── eyd-v-lengkap.md             # teks resmi EYD V (4 bab lengkap) dari ejaan.kemendikdasmen.go.id
+│   ├── peta-cakupan-eyd.md          # 261 butir EYD V → tempatnya di skill (✓/◐/✗) + hasil kajian
+│   ├── singkatan-akronim.md         # singkatan, akronim, dan kepanjangannya (EYD V + praktik ilmiah)
 │   ├── eyd-v-ringkas.md             # kaidah yang paling sering dilanggar + perubahan dari PUEBI
 │   ├── inventaris-kesalahan.md      # ±400 pola salah → benar dalam 13 kategori
 │   ├── pemenggalan-kata.md          # kaidah pemenggalan kata EYD V II.C, prosedur, LaTeX/Word/HTML
@@ -24,7 +26,8 @@ eyd/
 │   └── istilah-dan-kbbi.md          # kebijakan istilah asing vs padanan KBBI + glosarium sains data
 ├── scripts/
 │   ├── periksa.py                   # pemeriksa otomatis (Python 3, tanpa dependensi)
-│   └── penggal.py                   # pemenggal kata EYD V + keluaran \hyphenation{} untuk LaTeX
+│   ├── penggal.py                   # pemenggal kata EYD V + keluaran \hyphenation{} untuk LaTeX
+│   └── audit_cakupan.py             # audit kelengkapan skill terhadap butir EYD V
 └── evals/
     ├── evals.json                   # kasus uji untuk regresi skill
     ├── contoh-bermasalah.md         # harus menghasilkan banyak temuan
@@ -34,7 +37,9 @@ eyd/
     ├── contoh-gaya.md
     ├── contoh-latex.tex
     ├── contoh-penggalan.md          # pemenggalan salah di akhir baris
-    └── contoh-penggalan.tex         # \hyphenation dan \- yang salah
+    ├── contoh-penggalan.tex         # \hyphenation dan \- yang salah
+    ├── contoh-singkatan.md          # singkatan dan kepanjangan yang salah (eval 13)
+    └── contoh-rumus.tex             # baris kosong di sekitar rumus tampilan (eval 14)
 ```
 
 ## Cara memasang
@@ -134,6 +139,9 @@ python3 scripts/periksa.py evals/contoh-bersih.md        # harus: ERROR 0; WARNI
 python3 scripts/periksa.py evals/contoh-gaya.md          # harus: ERROR 0; ≥10 WARNING B-gaya
 python3 scripts/periksa.py evals/contoh-bermasalah.md    # harus: puluhan temuan
 python3 scripts/periksa.py evals/contoh-latex.tex        # harus: tepat 2 ERROR (Sehingga di awal, terdiri dari)
+python3 scripts/periksa.py evals/contoh-singkatan.md     # harus: ≥7 ERROR S-singkatan
+python3 scripts/periksa.py evals/contoh-rumus.tex        # harus: 1 ERROR + 2 WARNING A-rumus
+python3 scripts/audit_cakupan.py                         # harus: ERROR 0 (cakupan butir EYD V)
 ```
 
 `evals/evals.json` memuat enam prompt uji beserta keluaran yang diharapkan untuk menguji perilaku Claude, bukan hanya skripnya. Prinsip yang dipakai selama pengembangan: **menurunkan jumlah temuan tidak ada gunanya bila pemeriksa jadi buta** — setiap perubahan harus tetap menangkap kesalahan pada naskah uji.
@@ -168,6 +176,16 @@ Pemutakhiran dari penyuntingan tiga naskah buku teknis (±1.000 halaman):
 - Istilah: *likelihood* tidak diterjemahkan "kemungkinan" (*maximum likelihood*); *estimate* → estimasi (konsisten); *noise* (bukan "derau"); *sampling*: "penarikan sampel" untuk memilih unit dari populasi vs "membangkitkan"/*sampling* untuk nilai dari distribusi; *draws* dengan jembatan istilah ke "sampel posterior".
 - Pemenggalan: tanda hubung tertulis (*Jacobian-nya*) sah sebagai titik pindah baris; nama dikeluarkan dari daftar pemenggalan bahasa.
 - Kasus uji baru `evals/contoh-notasi-istilah.md` (eval 12).
+
+### 2026-11-10 — kajian cakupan EYD V, singkatan, dan rumus dalam paragraf
+
+Kajian membandingkan skill dengan situs resmi EYD V butir demi butir (261 butir).
+- **Teks resmi dilengkapi**: bab I.A Huruf Abjad, I.C Huruf Konsonan, dan I.E Gabungan Huruf Konsonan sebelumnya tidak ada di `eyd-v-lengkap.md`.
+- **Peta cakupan dan audit**: `peta-cakupan-eyd.md` memetakan setiap butir ke ringkasan, rujukan, dan kategori pemeriksa. `audit_cakupan.py` gagal bila ada subbab resmi yang hilang, jumlah butir tidak cocok, atau butir belum dipetakan. Hasil: bab I–III tercakup penuh; bab IV (95 butir serapan umum) diringkas untuk yang tersering.
+- **Ringkasan dilengkapi** dengan butir yang belum ada (antara lain I.F.3, I.F.5, I.F.9, II.B.2b, II.G.8, II.G.12, III.A.2, III.A.5–6, III.D.4, III.D.7, III.E.3, III.E.6–9, tanda tanya/seru/elipsis, III.L.3, III.M.2, IV.B). Tiga klaim yang tidak sesuai EYD V dibetulkan: huruf tebal untuk lema kamus, titik pada daftar pustaka, dan koma sebelum *yaitu* sebagai butir tersendiri.
+- **Singkatan dan kepanjangannya**: rujukan baru `singkatan-akronim.md`. `periksa.py` (S-singkatan) kini menandai singkatan yang dipakai sebelum atau tanpa diperkenalkan, diperkenalkan berulang, kepanjangan berkapital yang bukan nama diri, imbuhan/klitik tanpa tanda hubung, jamak *-s*, gelar tanpa titik/koma, *dll..*, *Rp.*, *Kg*, *P-3K*, akronim salah bentuk, dan pleonasme (*nomor NIP, data DTSEN*).
+- **Rumus tampilan bagian dari paragraf**: teks lanjutan sesudah rumus tidak diindentasi (`aparat-karya-ilmiah.md` §7); `periksa.py` (A-rumus) menandai baris kosong di sekitar rumus di LaTeX/Markdown.
+- Kasus uji baru: eval 13–15.
 
 ## Sumber
 

@@ -90,6 +90,28 @@
     "evals/contoh-notasi-istilah.md"
    ],
    "expected_output": "Paragraf 1: 'Persamaan' di tengah kalimat → 'persamaan'; Beta(18,85, 281,15) → Beta(18,85; 281,15); 'kemungkinan maksimum' → *maximum likelihood*. Paragraf 2: 'tarikan acak' → nilai acak/nilai bangkitan; 'menarik sampel dari distribusi' → membangkitkan nilai dari distribusi. Paragraf 3 tidak diubah: 'Persamaan' di awal kalimat sah, Beta(1, 1) sah, 'penarikan sampel acak sederhana' sah (memilih unit dari populasi). Merujuk istilah-dan-kbbi.md dan aparat-karya-ilmiah.md §7."
+  },
+  {
+   "id": 13,
+   "prompt": "Periksa dan perbaiki penulisan singkatan, akronim, dan kepanjangannya dalam naskah ini.",
+   "files": [
+    "evals/contoh-singkatan.md"
+   ],
+   "expected_output": "PDRB diperkenalkan pada penyebutan pertama dengan kepanjangan huruf kecil (produk domestik regional bruto (PDRB)); indeks pembangunan manusia (IPM) dan *root mean square error* (RMSE) tidak berkapital, RMSE dengan kepanjangan miring; BPS diperkenalkan sekali; Bappenas dan iptek; Dr. Rina Lestari, M.Si.; Susenas dan DTSEN tanpa 'survei'/'data'; 'seperti ..., dll..' diperbaiki; di-PHK, NIP-nya tanpa 'nomor', BPS-nya, para pelaku UMKM, Rp5.000, 10 kg, P3K. Catatan perubahan merujuk butir EYD V (II.F, III.E.5–6, III.L.1, I.F.20) dan singkatan-akronim.md. Hasil lolos periksa.py tanpa ERROR S-singkatan."
+  },
+  {
+   "id": 14,
+   "prompt": "Rapikan naskah LaTeX ini; paragrafnya diindentasi.",
+   "files": [
+    "evals/contoh-rumus.tex"
+   ],
+   "expected_output": "Baris kosong sesudah rumus (1) dan di sekitar rumus kedua dihapus sehingga 'dengan n ...' tidak menjadi paragraf baru berindentasi; 'Dengan' sesudah rumus kedua menjadi huruf kecil; rumus ketiga dan lanjutannya tidak diubah. Penjelasan merujuk aparat-karya-ilmiah.md §7 (rumus tampilan bukan paragraf baru). periksa.py tidak melaporkan A-rumus."
+  },
+  {
+   "id": 15,
+   "prompt": "Apakah skill ini sudah mencakup semua kaidah EYD V? Periksa cakupannya.",
+   "files": [],
+   "expected_output": "Menjalankan scripts/audit_cakupan.py; melaporkan jumlah butir resmi, persentase ✓/◐/✗, subbab resmi yang hilang dari eyd-v-lengkap.md (harus nol), dan butir ◐/✗ beserta rencana perbaikannya; tidak mengklaim cakupan tanpa menjalankan audit."
   }
  ],
  "cara_uji_harness": "python3 scripts/periksa.py evals/contoh-bermasalah.md → harus ada ERROR; evals/contoh-bersih.md → 0 ERROR, WARNING hanya kategori B-gaya; evals/contoh-gaya.md → ≥10 WARNING B-gaya, 0 ERROR; evals/contoh-penggalan.md → 4 ERROR + 2 WARNING N-penggal; evals/contoh-penggalan.tex → 3 ERROR + 2 WARNING N-penggal; python3 scripts/penggal.py dengan contoh resmi II.C harus sama dengan teks EYD V kecuali cileuncang (eu ditandai [cek KBBI]); evals/contoh-koma-subordinatif.md → ERROR untuk ', sehingga', ', agar', ', karena itu'; WARNING untuk ', karena' (4 kemunculan, 2 di antaranya sah sebagai penutup sisipan) dan subjek 'Panduan … menyatakan'; evals/contoh-notasi-istilah.md → 1 ERROR H-kapital (Persamaan di tengah kalimat) dan WARNING untuk pemisah parameter, kemungkinan maksimum, tarikan acak, menarik sampel dari distribusi"
