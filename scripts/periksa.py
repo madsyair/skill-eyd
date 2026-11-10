@@ -99,6 +99,27 @@ BENTUK_TERIKAT = ["antar","pasca","pra","sub","non","multi","ekstra","intra","in
                   "purna","adi","nir","mono","poli","panca","anti","mikro","makro","bio","eko","sosio","tele","trans",
                   "ultra","super","hiper","infra","supra","kontra","maha"]
 
+AKRONIM_BENTUK = {  # bentuk salah → bentuk EYD V (II.F.6 nama diri kapital awal; II.F.7 bukan nama diri huruf kecil)
+ "BAPPENAS":"Bappenas","SUSENAS":"Susenas","SAKERNAS":"Sakernas","BULOG":"Bulog","PODES":"Podes","BAPPEDA":"Bappeda",
+ "KEMENDAGRI":"Kemendagri","KEMENKEU":"Kemenkeu","KEMENDIKDASMEN":"Kemendikdasmen","KEMENKES":"Kemenkes",
+ "KEMENSOS":"Kemensos","KOWANI":"Kowani","MABBIM":"Mabbim","WITA":"Wita","PEMILU":"pemilu","Pemilu":"pemilu",
+ "IPTEK":"iptek","Iptek":"iptek","PUSKESMAS":"puskesmas","RAPIM":"rapim","RUDAL":"rudal","TILANG":"tilang",
+ "Paud":"PAUD","Sim":"SIM",
+}
+# singkatan sangat umum yang tidak perlu diperkenalkan (lihat singkatan-akronim.md §3c.6)
+SINGKATAN_UMUM = {"RI","PT","CV","TV","PDF","URL","ASEAN","DKI","WIB","WITA","WIT","OK","ID","HP","AC","UN","PBB","NKRI",
+ "UUD","DPR","MPR","TNI","POLRI","USB","CPU","GPU","RAM","PC","HTML","PDB","KTP","SIM","SD","SMP","SMA","SMK","S1","S2","S3","AI"}
+KATA_TUGAS = {"dan","atau","di","ke","dari","untuk","pada","yang","dengan","bagi","tentang","serta","of","and","the","for","in","on","to","a","an"}
+KEPALA_NAMA_DIRI = {"badan","kementerian","survei","sensus","program","lembaga","dinas","pemerintah","undang-undang","peraturan",
+ "universitas","politeknik","institut","sekolah tinggi","bank","organisasi","komisi","dewan","majelis","perserikatan","persatuan",
+ "kantor","direktorat","balai","pusat","biro","sekretariat","otoritas","korps","kongres","konferensi","rencana pembangunan",
+ "kitab","data","sistem informasi","world","international","united","national","federal","association","society","institute"}
+KEPALA_UMUM = {"produk","indeks","tingkat","angka","rasio","garis","nilai","rata-rata","rerata","metode","analisis","model",
+ "kartu","nomor","pemilihan","surat","standar","jumlah","persentase","laju","koefisien","uji","pendugaan","penduga","galat",
+ "kuadrat","regresi","jaringan","pembelajaran","kecerdasan","komponen","faktor","proses","rantai","teknik","algoritme",
+ "root","mean","principal","machine","artificial","deep","small","ordinary","generalized","least","maximum","bayesian",
+ "random","support","gross","human","consumer","proxy","markov","hierarchical","empirical","best","linear","mixed"}
+
 PLEONASME = [
  (r"\bagar supaya\b","agar / supaya (pilih satu)"),
  (r"\badalah merupakan\b","adalah / merupakan (pilih satu)"),
@@ -134,11 +155,21 @@ PLEONASME = [
  (r"\bdalam rangka\b","untuk (jika cocok)"),
  (r"\bsehubungan dengan hal tersebut\b","oleh karena itu"),
  (r"\btidak dapat dipungkiri bahwa\b|\bseperti (yang )?kita ketahui( bersama)?\b|\bperlu diketahui bahwa\b","kata pengantar hampa; pertimbangkan hapus"),
+ # singkatan yang mengulang unsur kepanjangannya
+ (r"\bnomor (nip|nik|nim|npwp|nidn|nuptk|pin|nisn)\b","hapus 'nomor' (unsur nomor sudah ada dalam singkatan)"),
+ (r"\bkartu (ktp|atm|kk|kip|kis|kjp)\b","hapus 'kartu' (K = kartu)"),
+ (r"\bmesin atm\b","ATM (M = mesin)"),
+ (r"\bdata dtsen\b","DTSEN (D = data)"),
+ (r"\bsurvei (susenas|sakernas|sbh|svk)\b","hapus 'survei' (S = survei)"),
+ (r"\bbadan (bps|bpk|bkn|bnpb|bpjs)\b","hapus 'badan' (B = badan)"),
+ (r"\brp ?[\d.,]+ rupiah\b","Rp... atau ... rupiah (pilih satu)"),
+ (r"\b(seperti|antara lain|misalnya|contohnya)\b[^.;:]{0,120}?\bdll\b","'dll.' mubazir sesudah seperti/antara lain/misalnya"),
 ]
 
 DIKSI = [
  (r"\bantara\b[^.,;:]{1,60}?\bdengan\b","antara ... dan (bukan 'dengan')","WARNING"),
  (r"\bterdiri dari\b","terdiri atas","ERROR"),
+ (r"(?<![\w.])(e\.g\.|i\.e\.|etc\.|viz\.)","singkatan Latin/Inggris dalam prosa Indonesia → misalnya / yaitu / dll.","WARNING"),
  (r"\btergantung (pada|kepada|dari)\b","bergantung pada","ERROR"),
  (r"\btergantung\b(?! (pada|kepada|dari))","bergantung (jika maksudnya 'depend'); 'tergantung' = digantung","WARNING"),
  (r"\bbaik\b[^.,;:]{1,60}?\bataupun\b","baik ... maupun","WARNING"),
@@ -379,6 +410,30 @@ def periksa(teks, ragam="ilmiah"):
             add(i,"S-singkatan","ERROR",bb[m.start():m.end()],bb[m.start():m.end()]+". (dengan titik)")
         for m in re.finditer(r"\bNIP\.",bb): add(i,"S-singkatan","ERROR",m.group(),"NIP (tanpa titik)")
         for m in re.finditer(r"\b(P\.T\.|C\.V\.)",bb): add(i,"S-singkatan","ERROR",m.group(),"PT / CV (tanpa titik)")
+        for m in re.finditer(r"(?<![\w-])(di|ber|ter|me|mem|men|meng|pe|per|se|non|anti|pro|pra|pasca|pan)([A-Z]{2,}[0-9]*)(?![\w])",bb):
+            add(i,"S-singkatan","ERROR",m.group(),f"{m.group(1)}-{m.group(2)} (singkatan kapital + imbuhan/bentuk terikat pakai tanda hubung, III.E.5)")
+        for m in re.finditer(r"(?<![\w-])(se|non|pan|pra|pro|anti|pasca)([A-Z][a-z]{2,})(?![\w])",bb):
+            add(i,"S-singkatan","ERROR",m.group(),f"{m.group(1)}-{m.group(2)} (tanda hubung sebelum huruf kapital, II.B.1c/III.E.5)")
+        for m in re.finditer(r"(?<![\w-])([A-Z]{2,}[0-9]*)(nya|ku|mu|kah|lah)(?![\w])",bb):
+            add(i,"S-singkatan","ERROR",m.group(),f"{m.group(1)}-{m.group(2)} (III.E.5)")
+        for m in re.finditer(r"(?<![\w-])([A-Z]{2,})(s|'s)(?![\w])",bb):
+            if not dlm_miring(m.start(),m.end()) and m.group(1) not in ("NOT","AS"):
+                add(i,"S-singkatan","WARNING",m.group(),f"jamak tidak memakai -s: 'beberapa {m.group(1)}', 'para ...'")
+        for m in re.finditer(r"(?<![\w.])((?:[SMD]|Ph|Sp|Dr)\.(?:Tr\.)?(?:[A-Z][a-z]{0,4}|[A-Z]{1,2}))(?=[\s,;)]|$)",bb):
+            add(i,"S-singkatan","ERROR",m.group(),m.group()+". (singkatan gelar: titik pada setiap unsur, II.F.1)")
+        for m in re.finditer(r"\b([A-Z][a-z]{2,}) ((?:S|M|D)\.(?:Tr\.)?[A-Z][A-Za-z]{0,4}\.|Ph\.D\.|M\.B\.A\.)",bb):
+            add(i,"S-singkatan","ERROR",m.group(),f"{m.group(1)}, {m.group(2)} (koma di antara nama dan gelar akademis, III.B.11)")
+        for m in re.finditer(r"\b(dll|dsb|dst|dkk|hlm|yth|sda|ybs)\.\.(?!\.)",low):
+            add(i,"S-singkatan","ERROR",bb[m.start():m.end()],m.group(1)+". (cukup satu titik di akhir kalimat)")
+        for m in re.finditer(r"\bRp\.\s?\d",bb): add(i,"S-singkatan","ERROR",m.group(),"Rp tanpa titik dan tanpa spasi: Rp5.000 (II.F.5)")
+        for m in re.finditer(r"\b\d+\s?(kg|km|cm|mm|ml|ha|gr)\.(?=\s+[a-z])",bb): add(i,"S-singkatan","ERROR",m.group(),"satuan tanpa titik (II.F.5)")
+        for m in re.finditer(r"\b\d+\s?(Kg|KG|Km|KM|Cm|Ml)\b",bb): add(i,"S-singkatan","ERROR",m.group(),"lambang satuan huruf kecil: kg, km, cm, ml")
+        for m in re.finditer(r"(?<![\w-])([A-Z]{1,4})-(\d)([A-Z]{1,4})(?![\w-])",bb):
+            add(i,"S-singkatan","WARNING",m.group(),f"{m.group(1)}{m.group(2)}{m.group(3)} jika angka melambangkan jumlah huruf (P3K), III.E.6")
+        for salah,benar in AKRONIM_BENTUK.items():
+            for m in re.finditer(r"(?<![\w-])"+salah+r"(?![\w-])",bb):
+                if benar[:1].islower() and (m.start()==0 or re.search(r"[.!?]\s*$",bb[:m.start()])): continue
+                add(i,"S-singkatan","ERROR",m.group(),benar+(" (akronim nama diri: kapital awal, II.F.6)" if benar[:1].isupper() else " (akronim bukan nama diri: huruf kecil, II.F.7)"))
         for m in re.finditer(r"\s[,.;:?!]",bb):
             if not re.search(r"\d\s[.]",bb[max(0,m.start()-1):m.end()]): add(i,"T-spasi","ERROR",repr(m.group()),"tidak ada spasi sebelum tanda baca")
         for m in re.finditer(r"[,;:][A-Za-z]",bb): add(i,"T-spasi","ERROR",m.group(),"beri satu spasi setelah tanda baca")
@@ -481,6 +536,72 @@ def periksa(teks, ragam="ilmiah"):
             add(0,"A-istilah","WARNING",f"'{a}' dan '{b2}' dipakai bergantian","satu konsep, satu istilah; pilih satu (lihat istilah-dan-kbbi.md)")
     return temuan
 
+def kepanjangan_dari(sebelum, singkatan):
+    """Cari kata-kata di depan '(SINGKATAN)' yang huruf awalnya membentuk singkatan (kata tugas boleh dilewati).
+    Kembalikan daftar kata kepanjangan atau None."""
+    huruf=[c for c in singkatan if c.isalpha()]
+    kata=re.findall(r"[A-Za-z\u00C0-\u00FF][\w\u00C0-\u00FF'-]*",sebelum)[-(len(huruf)+6):]
+    for mulai in range(len(kata)):
+        bag=kata[mulai:]
+        inti=[w for w in bag if w.lower() not in KATA_TUGAS]
+        if not inti or bag[0].lower() in KATA_TUGAS: continue
+        awal="".join(w[0] for w in inti).upper()
+        awal2="".join(p[0] for w in inti for p in w.split("-") if p).upper()
+        if awal==("".join(huruf)).upper() or awal2==("".join(huruf)).upper(): return bag
+    return None
+
+def periksa_singkatan(teks):
+    """S-singkatan tingkat naskah: diperkenalkan sebelum dipakai, sekali saja, dan kepanjangan berkapital hanya untuk nama diri."""
+    temuan=[]
+    def add(no,tk,apa,saran): temuan.append(dict(baris=no,kategori="S-singkatan",tingkat=tk,temuan=apa,saran=saran))
+    pakai={}; kenal={}
+    dalam_kode=False
+    for i,b in enumerate(teks.split("\n"),1):
+        if b.strip().startswith("```"): dalam_kode=not dalam_kode; continue
+        if dalam_kode or terlindung(b): continue
+        bb=re.sub(r"https?://\S+","",b)
+        bb=re.sub(r"\([A-Z][^()]{0,60}\d{4}[^()]{0,20}\)","(SITASI)",bb)
+        bb=re.sub(r"`[^`]*`","",bb)
+        jdl=judul(b)
+        for m in re.finditer(r"(?<![\w-])([A-Z][A-Z0-9]{1,7})(?![\w])(?!-[ \t]*$)",bb):
+            s=m.group(1)
+            if sum(c.isupper() for c in s)<2 or s in ("RUMUS","SIMBOL","SITASI","KODE") or re.fullmatch(r"[IVXLCDM]+",s): continue
+            # diperkenalkan: "kepanjangan (S)", "(..., S)", atau "S (kepanjangan)"
+            seb=bb[:m.start()]; ses=bb[m.end():]
+            intro_kurung=bool(re.search(r"\((?:[^()]*,\s*)?$",seb)) and ses.startswith(")")
+            intro_balik=bool(re.match(r"\s*\((?=[a-zA-Z*_])[^()]{8,}\)",ses)) and not intro_kurung
+            if intro_kurung or intro_balik:
+                kenal.setdefault(s,[]).append((i,m.start()))
+                if intro_kurung:
+                    kp=kepanjangan_dari(re.sub(r"\((?:[^()]*,\s*)?$","",seb),s)
+                    if kp:
+                        inti=[w for w in kp if w.lower() not in KATA_TUGAS]
+                        semua_kapital=all(w[:1].isupper() for w in inti)
+                        miring=bool(re.search(r"[*_][^*_]*$",re.sub(r"\((?:[^()]*,\s*)?$","",seb)))
+                        if semua_kapital and len(inti)>=2 and kp[0].lower() in KEPALA_UMUM and kp[0].lower() not in KEPALA_NAMA_DIRI:
+                            awal_kal=not re.search(r"\S",seb[:seb.rfind(kp[0])]) or re.search(r"[.!?]\s*$",seb[:seb.rfind(kp[0])])
+                            if not (awal_kal and all(w[:1].islower() for w in inti[1:])):
+                                add(i,"WARNING"," ".join(kp)+f" ({s})",
+                                    " ".join(w if w.lower() in KATA_TUGAS else w.lower() for w in kp)+f" ({s}) — kepanjangan yang bukan nama diri ditulis huruf kecil; kapital hanya untuk nama lembaga/dokumen/program (I.F.20, II.F.3)"
+                                    +("; istilah asing dimiringkan" if not miring and re.match(r"[a-z]+$",kp[0].lower()) and kp[0].lower() in {"root","mean","principal","machine","artificial","deep","small","ordinary","generalized","least","maximum","bayesian","random","support","gross","human","consumer","proxy","markov","hierarchical","empirical","best","linear","mixed"} else ""))
+                continue
+            if not jdl: pakai.setdefault(s,[]).append((i,m.start()))
+    for s,bar in pakai.items():
+        if s in SINGKATAN_UMUM or s in AKRONIM_BENTUK: continue
+        if s not in kenal:
+            if len(bar)==1:
+                add(bar[0][0],"WARNING",s,"singkatan muncul sekali tanpa kepanjangan → tulis kepanjangannya saja (singkatan-akronim.md §3c)")
+            else:
+                add(bar[0][0],"WARNING",s,f"singkatan dipakai {len(bar)}× tanpa diperkenalkan → kepanjangan ({s}) pada penyebutan pertama")
+        elif bar[0]<kenal[s][0]:
+            add(bar[0][0],"WARNING",s,f"dipakai sebelum diperkenalkan (diperkenalkan pada baris {kenal[s][0][0]}) → pindahkan kepanjangan ke penyebutan pertama")
+    for s,bar in kenal.items():
+        if len(bar)>1:
+            add(bar[1][0],"WARNING",f"({s}) diperkenalkan {len(bar)}×",f"cukup sekali (baris {bar[0][0]}); sesudahnya pakai {s} saja — kecuali gaya selingkung meminta per bab/abstrak")
+        if s not in pakai or all(x<bar[0] for x in pakai[s]):
+            add(bar[0][0],"WARNING",f"({s})","diperkenalkan tetapi tidak dipakai lagi → pertimbangkan cukup kepanjangannya (abaikan bila singkatan dipakai di tabel/gambar atau bagian lain)")
+    return temuan
+
 def perbaiki(teks):
     """Terapkan hanya penggantian yang aman (kata tidak baku, kata depan digabung, gabungan kata, partikel, singkatan)."""
     out=[]; dalam_kode=False; jumlah=Counter()
@@ -528,6 +649,56 @@ def periksa_penggalan(mentah, ext):
             add(nomor(m.start()),tk,f"{m.group(1)}-/{m.group(2)}",pesan)
     return temuan
 
+def periksa_rumus(mentah, ext):
+    """A-rumus: rumus tampilan adalah bagian kalimat. Baris kosong di sekitarnya (LaTeX/Markdown) memecah
+    paragraf sehingga teks lanjutan terindentasi; huruf kapital sesudah rumus yang kalimatnya berlanjut salah."""
+    temuan=[]
+    def add(pos,tk,apa,saran): temuan.append(dict(baris=mentah.count("\n",0,pos)+1,kategori="A-rumus",tingkat=tk,temuan=apa,saran=saran))
+    if ext in (".tex",".ltx"):
+        pola=r"\\begin\{(equation|align|gather|multline|eqnarray|displaymath|flalign|alignat)(\*?)\}(.*?)\\end\{\1\2\}|\\\[(.*?)\\\]|\$\$(.*?)\$\$"
+        isi_baris=lambda s: s.lstrip().startswith("%")
+    elif ext in (".md",".markdown",".qmd",".rmd"):
+        pola=r"\$\$(.*?)\$\$(?:\s*\{#[^}]*\})?"
+        isi_baris=lambda s: False
+    else:
+        return temuan
+    LANJUT=r"(dengan|di mana|yaitu|yakni|sehingga|untuk|dan|serta|atau|maka|adalah|merupakan|menyatakan|jika|apabila|karena|agar|tempat|sedangkan|dimana)\b"
+    for m in re.finditer(pola,mentah,flags=re.S):
+        isi=[g for g in m.groups() if g is not None][-1]
+        isi=re.sub(r"\\(label|tag|nonumber|notag)\*?(\{[^}]*\})?","",isi)
+        isi=re.sub(r"\\\\\s*$","",isi.strip()).strip()
+        akhir_titik=isi.endswith(".") or isi.endswith(".}")
+        cuplik=re.sub(r"\s+"," ",isi)[:40]
+        # sesudah rumus
+        sesudah=mentah[m.end():]
+        ms=re.match(r"[ \t]*\n((?:[ \t]*\n)+)?[ \t]*([^\n]*)",sesudah)
+        if ms and ms.group(2) and not isi_baris(ms.group(2)):
+            nxt=ms.group(2).strip(); kosong=bool(ms.group(1))
+            perintah=nxt.startswith(("\\section","\\subsection","\\subsubsection","\\chapter","\\paragraph","\\begin","\\end","\\item","#","$$","\\["))
+            if not perintah:
+                kecil=bool(re.match(r"[a-z]",nxt)) or bool(re.match(LANJUT,nxt))
+                if kosong and nxt.startswith("\\noindent"): pass
+                elif kosong and kecil:
+                    add(m.end(),"ERROR",f"rumus «{cuplik}» lalu baris kosong lalu «{nxt[:30]}»",
+                        "kalimat berlanjut sesudah rumus, tetapi baris kosong membuka paragraf baru (teks terindentasi); hapus baris kosong (atau \\noindent)")
+                elif kosong and not akhir_titik:
+                    add(m.end(),"WARNING",f"rumus «{cuplik}» tanpa titik, disusul paragraf baru «{nxt[:30]}»",
+                        "jika kalimat berlanjut: hapus baris kosong dan mulai dengan huruf kecil; jika paragraf baru: akhiri rumus dengan titik")
+                elif not kosong and re.match(r"(Dengan|Di mana|Dimana|Yaitu|Yakni|Sehingga|Untuk|Dan|Serta|Atau|Maka|Tempat)\b",nxt) and not akhir_titik:
+                    add(m.end(),"WARNING",f"«{nxt[:30]}» sesudah rumus",
+                        "kalimat masih berlanjut sesudah rumus → huruf kecil, tanpa indentasi (di mana → dengan)")
+                elif not kosong and nxt.startswith(("\\indent","\\par")):
+                    add(m.end(),"WARNING",nxt[:30],"teks lanjutan sesudah rumus tidak diindentasi; hapus \\indent/\\par")
+        # sebelum rumus
+        sebelum=mentah[:m.start()]
+        mb=re.search(r"([^\n]*\S)[ \t]*\n(?:[ \t]*\n)+[ \t]*$",sebelum)
+        if mb and not isi_baris(mb.group(1)):
+            prv=mb.group(1).rstrip()
+            if re.search(r"[A-Za-z,:]$",prv) and not prv.lstrip().startswith(("\\","#")):
+                add(m.start(),"WARNING",f"«…{prv[-30:]}» lalu baris kosong lalu rumus",
+                    "baris kosong sebelum rumus memutus kalimat/paragraf; tempelkan rumus pada kalimat pengantarnya")
+    return temuan
+
 # ---------- 4. Laporan ----------
 def main():
     ap=argparse.ArgumentParser(description=__doc__,formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -541,9 +712,12 @@ def main():
         for k,v in jml.most_common(): print(f"  {k} → {TIDAK_BAKU.get(k,'')} ({v}x)")
         teks=teks2
     temuan=periksa(teks,a.ragam)
+    temuan+=periksa_singkatan(teks)
     ext=os.path.splitext(a.berkas)[1].lower()
     if ext not in (".docx",".odt",".rtf",".html",".htm"):
-        temuan+=periksa_penggalan(open(a.berkas,encoding="utf8").read(),ext)
+        mentah=open(a.berkas,encoding="utf8").read()
+        temuan+=periksa_penggalan(mentah,ext)
+        temuan+=periksa_rumus(mentah,ext)
     temuan.sort(key=lambda t:(t["baris"],t["kategori"]))
     n_err=sum(1 for t in temuan if t["tingkat"]=="ERROR"); n_warn=len(temuan)-n_err
     kata=len(teks.split()); kal=sum(len(kalimat_dari(p)) for p in teks.split("\n") if p.strip())

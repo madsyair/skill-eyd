@@ -77,6 +77,15 @@ apapun → **apa pun** · siapapun → **siapa pun** · dimanapun → **di mana 
 
 s/d → **s.d.** · a/n → **a.n.** · u/p → **u.p.** · d/a → **d.a.** · dll → **dll.** · dsb → **dsb.** · dst → **dst.** · hal./h. → **hlm.** · Yth → **Yth.** · Bpk → **Bpk.** · Sdr → **Sdr.** · No → **No.** · Jl → **Jl.** · SST → **S.ST.** · MSi → **M.Si.** · S.Kom ✓ · Ph.D ✓ (Ph.D. dengan titik akhir) · Dr (doktor) → **Dr.**; dr. (dokter) · Prof → **Prof.** · NIP. → **NIP** (tanpa titik) · P.T. → **PT** · C.V. → **CV** · BPS ✓ · M.S.I → **M.Si.**
 Angka: Rp 5.000 → **Rp5.000,00** / **Rp5.000** · 5 % → **5%** · 10,000 → **10.000** · 3.5 (desimal) → **3,5** · tahun 2.026 → **tahun 2026** · 25 orang (di awal kalimat) → **Sebanyak 25 orang** · lima puluh dua → **52** · 3 kali → **tiga kali** · 2 tahun → **2 tahun** ✓ (ukuran waktu) · abad 21 → **abad ke-21 / abad XXI** · ke 3 → **ke-3 / ketiga** · 1990an → **1990-an** · 08.30 WIB ✓ / 08:30 ✓ · jam 10.00 → **pukul 10.00** (jam = durasi) · 2020-2024 → **2020—2024** (tanda pisah) · hal 12-20 → **hlm. 12—20** · 5-10% → **5%—10%**.
+Singkatan dan kepanjangan (rincian `singkatan-akronim.md`):
+S1. **Kepanjangan dikapitalkan padahal bukan nama diri**: *Produk Domestik Bruto (PDB), Indeks Pembangunan Manusia (IPM), Root Mean Square Error (RMSE)* → **produk domestik bruto (PDB), indeks pembangunan manusia (IPM), *root mean square error* (RMSE)**. Nama diri tetap kapital: *Badan Pusat Statistik (BPS), Survei Sosial Ekonomi Nasional (Susenas)*.
+S2. **Singkatan dipakai sebelum diperkenalkan / tidak pernah diperkenalkan / diperkenalkan berulang** → kepanjangan (SINGKATAN) sekali pada penyebutan pertama; abstrak memperkenalkan sendiri.
+S3. **Akronim salah bentuk**: *BAPPENAS, SUSENAS* → **Bappenas, Susenas** · *IPTEK, Pemilu* (tengah kalimat) → **iptek, pemilu** · *Paud, Sim* → **PAUD, SIM**.
+S4. **Imbuhan/klitik tanpa hubung**: *diPHK, BPSnya, seIndonesia, nonASEAN* → **di-PHK, BPS-nya, se-Indonesia, non-ASEAN** · tetapi *P-3K* → **P3K** (angka = jumlah huruf).
+S5. **Pleonasme singkatan**: *nomor NIP, kartu KTP, mesin ATM, nomor PIN, data DTSEN, survei Susenas, Rp5.000 rupiah* → **NIP, KTP, ATM, PIN, DTSEN, Susenas, Rp5.000**.
+S6. **Jamak/serapan bentuk asing**: *UMKMs, KTP's* → **para pelaku UMKM, beberapa KTP** · *e.g., i.e., etc.* → **misalnya, yaitu, dll.**
+S7. **Titik**: *dll..* (akhir kalimat) → **dll.** · *Rp. 5.000, 10 Kg.* → **Rp5.000, 10 kg** · *M.Si, S.Kom* → **M.Si., S.Kom.** · gelar tanpa koma: *Ahmad S.E.* → **Ahmad, S.E.**
+S8. *seperti A, B, dll.* → **seperti A dan B** (*dll.* mubazir sesudah *seperti/antara lain/misalnya*).
 
 ---
 
@@ -102,6 +111,7 @@ T15. *et al.* dimiringkan dan diberi titik; *dkk.* diberi titik.
 T16. Kurung: kepanjangan lalu singkatan pada penyebutan pertama: **Badan Pusat Statistik (BPS)**, selanjutnya *BPS* saja.
 T17. Tanda tanya/seru tidak digandakan (*?!*, *!!!*) dalam ragam resmi.
 T18. Petik tunggal untuk makna: *disebut "overfitting" 'terlalu pas'* → gunakan kurung untuk padanan istilah: ***overfitting* (kelewat pas)** dan petik tunggal untuk makna kata.
+T19. **Baris kosong di sekitar rumus tampilan memecah paragraf**: kalimat lanjutan sesudah rumus (*dengan n ukuran sampel*) menjadi paragraf baru berindentasi → hapus baris kosong (LaTeX/Markdown) atau pakai gaya paragraf tanpa indentasi (Word); huruf pertama lanjutan kecil (`aparat-karya-ilmiah.md` §7).
 
 ---
 
